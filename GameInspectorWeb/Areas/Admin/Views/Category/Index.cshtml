@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Antiforgery
+@inject IAntiforgery Antiforgery
+@model List<Category>
+@{ ViewBag.Title = "Articles"; }
+
+<div class="card" style="width: 50%">
+
+    <div class="card-body">
+        <a id="linkNew" asp-controller="Category" asp-action="New" class="btn btn-secondary"><i class="fas fa-plus"></i>New Category</a>
+        <table id="dataTable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.Id</td>
+                        <td>@item.CategoryName</td>
+                        <td>
+                            @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a>*@
+                            <div class="form-check">
+                                <form>
+                                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                    @*<input type="hidden" id="idEdit" value="@item.Id" name="idEdit" />*@
+                                    @*<input class="btn btn-warning" type="submit" value="Edit" />*@
+                                </form>
+                                <form asp-action="Delete">
+                                    <input type="hidden" id="id" value="@item.Id" name="id" />
+                                    <input class="btn btn-danger" type="submit" value="Delete" />
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->

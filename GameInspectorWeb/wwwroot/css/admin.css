@@ -1,0 +1,33 @@
+﻿body:not(.sidebar-collapse) .nav-treeview > .nav-item {
+    margin-left: 1rem;
+}
+
+.field-validation-error {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+
+.edit-metting-photo-preview {
+    height: 100px;
+}
+
+.no-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 80px;
+    border: 10px solid white;
+    border-radius: 0.25rem;
+    font-style: normal;
+    font-family: "Font Awesome 5 Free";
+    font-size: 44px;
+    background-color: var(--light);
+    color: var(--gray);
+}
+
+.no-image::before{
+    content: "\f03e";
+}

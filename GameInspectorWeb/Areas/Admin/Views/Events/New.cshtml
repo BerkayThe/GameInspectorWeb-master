@@ -1,0 +1,78 @@
+﻿@model NewArticleViewModel
+@{
+    ViewData["Title"] = "New Article";
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-6">
+        <div class="card card-primary">
+            @*<div class="card-header">
+                    <h3 class="card-title">Quick Example</h3>
+                </div>*@
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="Title">Article Title</label>
+                        <input asp-for="Title" class="form-control" placeholder="Title" data-slugify-target="#Slug">
+                        <span asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Content">Article Content</label>
+                        <textarea asp-for="Content" class="form-control" rows="15" placeholder="Article Content"></textarea>
+                        <span asp-validation-for="Content"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CharacterContent">Character Content</label>
+                        <textarea class="form-control" asp-for="CharacterContent" rows="15" placeholder="Character Content"></textarea>
+                        <span asp-validation-for="CharacterContent"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input asp-for="CoverPhoto" class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            </div>
+                            @*<div class="input-group-append">
+                    <span class="input-group-text">Upload</span>
+                </div>*@
+                        </div>
+                        <span asp-validation-for="CoverPhoto"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFiles">Content Files input</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input asp-for="ContentPhotos" class="custom-file-input" id="exampleInputFiles" multiple>
+                                <label class="custom-file-label" for="exampleInputFiles">Choose file</label>
+                            </div>
+                            @*<div class="input-group-append">
+                    <span class="input-group-text">Upload</span>
+                </div>*@
+                        </div>
+                        <span asp-validation-for="ContentPhotos"></span>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /.card -->
+
+@section scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        bsCustomFileInput.init();
+    </script>
+
+}

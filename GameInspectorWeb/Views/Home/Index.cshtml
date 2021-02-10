@@ -1,0 +1,15 @@
+﻿@model Article
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<form asp-action="Resim" asp-controller="Home" method="post" enctype="multipart/form-data">
+    <input type="file" asp-for="@Model.ContentPhotos" class="form-control-file" multiple/>
+    <input type="submit" class="btn btn-primary" value="Send"/>
+</form>

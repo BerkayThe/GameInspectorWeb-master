@@ -1,0 +1,114 @@
+﻿@model EditArticleViewModel
+@{ ViewData["Title"] = "Edit Article"; }
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-6">
+        <div class="card card-primary">
+            @*<div class="card-header">
+                    <h3 class="card-title">Quick Example</h3>
+                </div>*@
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="Title">Article Title</label>
+                        <input asp-for="Title" class="form-control" placeholder="Title" data-slugify-target="#Slug">
+                        <span asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Content">Article Content</label>
+                        <textarea asp-for="Content" class="form-control" rows="15" placeholder="Article Content"></textarea>
+                        <span asp-validation-for="Content"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CharacterContent">Character Content</label>
+                        <textarea class="form-control" asp-for="CharacterContent" rows="15" placeholder="Character Content"></textarea>
+                        <span asp-validation-for="CharacterContent"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <div>
+                            <input type="hidden" asp-for="ExistingCoverPhotoPath" />
+                            @{ string showPreview = string.IsNullOrEmpty(Model.ExistingCoverPhotoPath) ? "display: none" : "";}
+
+                            <img src="~/img/@Model.ExistingCoverPhotoPath" alt="@Model.Title" height="100" style="@showPreview" class="edit-metting-photo-preview img-thumbnail mb-2" id="img-preview" />
+
+                        </div>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input asp-for="CoverPhoto" class="custom-file-input" id="exampleInputFile" data-preview-image-target="#img-preview">
+                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            </div>
+                            @*<div class="input-group-append">
+                                    <span class="input-group-text">Upload</span>
+                                </div>*@
+                        </div>
+                        <span asp-validation-for="CoverPhoto"></span>
+                    </div>
+                    <div id="gallery">
+                        @foreach (var item in Model.ExistingContentPhotoPath.Split(","))
+                        {
+                            <img src="/img/@item" alt="@item" height="100" class="edit-metting-photo-preview img-thumbnail mb-2" />            
+                        }
+                    </div>
+
+                    <div class="form-group gallery">
+                        <label for="exampleInputFiles">Content Files input</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input asp-for="ContentPhotos" class="custom-file-input" id="exampleInputFiles" multiple>
+                                <label class="custom-file-label" for="exampleInputFiles">Choose file</label>
+                            </div>
+                            @*<div class="input-group-append">
+                                    <span class="input-group-text">Upload</span>
+                                </div>*@
+                        </div>
+                        <span asp-validation-for="ContentPhotos"></span>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /.card -->
+
+@section scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(function () {
+            // Multiple images preview in browser
+            var imagesPreview = function (input, placeToInsertImagePreview) {
+
+                if (input.files) {
+                    var filesAmount = input.files.length;
+
+                    for (i = 0; i < filesAmount; i++) {
+                        var reader = new FileReader();
+                        $("div#gallery").empty();
+                        reader.onload = function (event) {
+                            $($.parseHTML('<img>')).addClass("edit-metting-photo-preview img-thumbnail mb-2").attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                        }
+
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+            };
+
+            $('#exampleInputFiles').on('change', function () {
+                imagesPreview(this, 'div#gallery');
+            });
+        });</script>
+
+    <script>
+        bsCustomFileInput.init();
+    </script>
+
+}
