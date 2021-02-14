@@ -63,5 +63,21 @@ namespace GameInspectorWeb.Areas.Admin.Controllers
             }
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var category = _db.Categories.Find(id);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            _db.Remove(category);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -4,6 +4,7 @@ using GameInspectorWeb.Services;
 using GameInspectorWeb.Utilites;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,13 +26,23 @@ namespace GameInspectorWeb.Areas.Admin.Controllers
             return View(_db.Articles.ToList());
         }
 
+        [HttpGet]
         public IActionResult New()
         {
-            return View();
+            var categories = _db.Categories.ToList();
+            var selectList = new List<SelectListItem>();
+            categories.ForEach(x => selectList.Add(new SelectListItem(x.CategoryName,x.Id.ToString())));
+
+            var vm = new NewArticleViewModel
+            {
+                Categories = selectList
+            };
+
+            return View(vm);
         }
 
         [HttpPost]
-        public async Task<IActionResult> New(NewArticleViewModel vm, [FromServices] IWebHostEnvironment env)
+        public async Task<IActionResult> New(NewArticleViewModel vm, [FromServices] IWebHostEnvironment env,int[] selectedCategories)
         {
             if (ModelState.IsValid)
             {
@@ -71,6 +82,22 @@ namespace GameInspectorWeb.Areas.Admin.Controllers
                         CoverPhotoPath = fileName,
                         ContentPhotosPaths = resim
                     };
+                    //
+                    //var ArtId = _db.Articles.OrderBy(x=>x.Id).Last().Id;
+
+                    for (int i = 0; i < selectedCategories.Length; i++)
+                    {
+                        var tmp = selectedCategories[i];
+                        var data = _db.Categories.FirstOrDefault(x => x.Id == tmp);
+                        var ArtCat = new ArticleCategory
+                        {
+                            ArticleId = article.Id,
+                            Article = article,
+                            Category = data,
+                            CategoryId = data.Id
+                        };
+                        article.ArticleCategories.Add(ArtCat);
+                    }
                     _db.Articles.Add(article);
                     _db.SaveChanges();
                     return RedirectToAction("Index");

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using GameInspectorWeb.Data;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,7 +12,7 @@ namespace GameInspectorWeb.Areas.Admin.Models
 {
     public class NewArticleViewModel
     {
-
+        public int CategoryId { get; set; }
         public string Title { get; set; }
 
         public string Content { get; set; }
@@ -26,5 +28,9 @@ namespace GameInspectorWeb.Areas.Admin.Models
         public IFormFileCollection ContentPhotos { get; set; }
 
         public string VideoPath { get; set; }
+
+        public string[] SelectedCategories { get; set; }
+
+        public IEnumerable<SelectListItem> Categories { get; set; }
     }
 }

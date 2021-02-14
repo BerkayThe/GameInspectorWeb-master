@@ -10,6 +10,10 @@ namespace GameInspectorWeb.Data
 {
     public class Article
     {
+        public Article()
+        {
+            ArticleCategories = new HashSet<ArticleCategory>();
+        }
         public int Id { get; set; }
 
         [Required, MaxLength(ErrorMessage = "Makale için lütfen bir başlık giriniz.")]
