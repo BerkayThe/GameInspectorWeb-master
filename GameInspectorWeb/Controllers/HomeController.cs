@@ -14,15 +14,21 @@ namespace GameInspectorWeb.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,ApplicationDbContext applicationDbContext)
         {
             _logger = logger;
+            _db = applicationDbContext;
         }
 
         public IActionResult Index()
         {
-            return View();
+            ViewBag.Kategori = _db.Categories.Select(x => x.CategoryName).ToList();
+
+            var vm = _db.Articles.ToList();
+
+            return View(vm);
         }
 
         public IActionResult Privacy()

@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@model  List<Article>
+<!doctype html>
 <html class="no-js" lang="zxx">
 
 
@@ -20,35 +21,12 @@
         <div class="hero-section section position-relative">
             <div class="hero-slider-three">
                 <!--Single Hero Item-->
+                @foreach (var item in Model)
+	            {
                 <div class="single-hero-item">
-                    <img src="~/lib/assets/images/hero/hero-4.jpg" alt="">
+                    <img src="~/img/@item.CoverPhotoPath" alt="" width="350" height="250" >
                 </div>
-                <!--Single Hero Item-->
-                <!--Single Hero Item-->
-                <div class="single-hero-item">
-                    <img src="~/lib/assets/images/hero/hero-5.jpg" alt="">
-                </div>
-                <!--Single Hero Item-->
-                <!--Single Hero Item-->
-                <div class="single-hero-item">
-                    <img src="~/lib/assets/images/hero/hero-6.jpg" alt="">
-                </div>
-                <!--Single Hero Item-->
-                <!--Single Hero Item-->
-                <div class="single-hero-item">
-                    <img src="~/lib/assets/images/hero/hero-4.jpg" alt="">
-                </div>
-                <!--Single Hero Item-->
-                <!--Single Hero Item-->
-                <div class="single-hero-item">
-                    <img src="~/lib/assets/images/hero/hero-5.jpg" alt="">
-                </div>
-                <!--Single Hero Item-->
-                <!--Single Hero Item-->
-                <div class="single-hero-item">
-                    <img src="~/lib/assets/images/hero/hero-6.jpg" alt="">
-                </div>
-                <!--Single Hero Item-->
+	            }
             </div>
         </div>
         <!--slider section end-->

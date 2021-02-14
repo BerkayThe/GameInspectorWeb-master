@@ -30,6 +30,11 @@
                         <span asp-validation-for="CharacterContent"></span>
                     </div>
                     <div class="form-group">
+                        <label asp-for="VideoPath">Video Path</label>
+                        <input class="form-control" asp-for="VideoPath" placeholder="Video Path URL">
+                        <span asp-validation-for="VideoPath"></span>
+                    </div>
+                    <div class="form-group">
                         <select asp-for="SelectedCategories" asp-items="Model.Categories" multiple></select>
                         @*<span asp-validation-for="ArticleCategories"></span>*@
                     </div>

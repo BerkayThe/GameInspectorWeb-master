@@ -28,6 +28,11 @@
                         <span asp-validation-for="CharacterContent"></span>
                     </div>
                     <div class="form-group">
+                        <label asp-for="VideoPath">Video Path</label>
+                        <input class="form-control" asp-for="VideoPath" placeholder="Video Path URL">
+                        <span asp-validation-for="VideoPath"></span>
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputFile">File input</label>
                         <div>
                             <input type="hidden" asp-for="ExistingCoverPhotoPath" />
@@ -42,16 +47,15 @@
                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                             </div>
                             @*<div class="input-group-append">
-                                    <span class="input-group-text">Upload</span>
-                                </div>*@
+                    <span class="input-group-text">Upload</span>
+                </div>*@
                         </div>
                         <span asp-validation-for="CoverPhoto"></span>
                     </div>
                     <div id="gallery">
                         @foreach (var item in Model.ExistingContentPhotoPath.Split(","))
                         {
-                            <img src="/img/@item" alt="@item" height="100" class="edit-metting-photo-preview img-thumbnail mb-2" />            
-                        }
+                <img src="/img/@item" alt="@item" height="100" class="edit-metting-photo-preview img-thumbnail mb-2" />}
                     </div>
 
                     <div class="form-group gallery">
@@ -62,8 +66,8 @@
                                 <label class="custom-file-label" for="exampleInputFiles">Choose file</label>
                             </div>
                             @*<div class="input-group-append">
-                                    <span class="input-group-text">Upload</span>
-                                </div>*@
+                    <span class="input-group-text">Upload</span>
+                </div>*@
                         </div>
                         <span asp-validation-for="ContentPhotos"></span>
                     </div>

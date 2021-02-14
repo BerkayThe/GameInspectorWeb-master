@@ -94,6 +94,10 @@
                             <ul>
                                 <li><a href="login.html">LOGIN</a></li>
                                 <li><a href="register.html">REGISTER</a></li>
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <li><a asp-area="Admin" asp-controller="Events" asp-action="Index">ADMIN</a></li>
+                                }
                                 <li class="header-search">
                                     <a class="header-search-toggle" href="#"><i class="icofont-search-2"></i></a>
                                     <div class="header-search-form">
