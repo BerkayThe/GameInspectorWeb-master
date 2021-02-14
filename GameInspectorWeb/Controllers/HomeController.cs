@@ -25,23 +25,6 @@ namespace GameInspectorWeb.Controllers
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Resim(Article article)
-        {
-            if (article.ContentPhotos.Count > 0)
-            {
-                foreach (var photo in article.ContentPhotos)
-                {
-                    var path = Guid.NewGuid() + "_" + photo.FileName;
-                    var savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img");
-                    var filePath = Path.Combine(savePath, path);
-                    await photo.CopyToAsync(new FileStream(filePath, FileMode.Create));
-                }
-            }
-
-            return RedirectToAction("Index");
-        }
-
         public IActionResult Privacy()
         {
             return View();
