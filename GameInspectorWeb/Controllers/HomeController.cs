@@ -49,7 +49,6 @@ namespace GameInspectorWeb.Controllers
             var vm = _db.Articles.OrderByDescending(x => x.Time).Skip(pageIndex * pageSize).Take(pageSize).ToList();
 
             return Json(vm.ToList());
-            //return View(vm);
         }
     }
 }

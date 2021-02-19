@@ -9,6 +9,7 @@
     <!-- Place favicon.ico in the root directory -->
     <link href="~/lib/assets/images/favicon.ico" type="img/x-icon" rel="shortcut icon">
     <!-- All css files are included here. -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="~/lib/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/lib/assets/css/qanto.css">
     <link rel="stylesheet" href="~/lib/assets/css/bauhaus93.css">
@@ -17,7 +18,7 @@
     <link rel="stylesheet" href="~/lib/assets/css/plugins.css">
     <link rel="stylesheet" href="~/lib/assets/css/helper.css">
     <link rel="stylesheet" href="~/lib/assets/css/style.css">
-    
+
     <!-- Modernizr JS -->
     <script src="~/lib/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
@@ -96,8 +97,7 @@
                                 <li><a href="register.html">REGISTER</a></li>
                                 @if (User.IsInRole("admin"))
                                 {
-                                    <li><a asp-area="Admin" asp-controller="Events" asp-action="Index">ADMIN</a></li>
-                                }
+                    <li><a asp-area="Admin" asp-controller="Events" asp-action="Index">ADMIN</a></li>}
                                 <li class="header-search">
                                     <a class="header-search-toggle" href="#"><i class="icofont-search-2"></i></a>
                                     <div class="header-search-form">
@@ -201,6 +201,7 @@
 
     </footer>
     <!--Footer section end-->
+
     <script src="~/lib/assets/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="~/lib/assets/js/popper.min.js"></script>
     <script src="~/lib/assets/js/bootstrap.min.js"></script>
