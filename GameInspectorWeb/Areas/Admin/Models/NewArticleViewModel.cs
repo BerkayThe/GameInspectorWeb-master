@@ -13,6 +13,7 @@ namespace GameInspectorWeb.Areas.Admin.Models
     public class NewArticleViewModel
     {
         public int CategoryId { get; set; }
+
         public string Title { get; set; }
 
         public string Content { get; set; }

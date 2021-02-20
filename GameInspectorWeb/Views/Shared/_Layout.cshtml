@@ -23,6 +23,7 @@
     <script src="~/lib/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
+
     <!--Header section start-->
     <header class="header header-static bg-black header-sticky">
         <div class="default-header menu-right">
@@ -97,7 +98,8 @@
                                 <li><a href="register.html">REGISTER</a></li>
                                 @if (User.IsInRole("admin"))
                                 {
-                    <li><a asp-area="Admin" asp-controller="Events" asp-action="Index">ADMIN</a></li>}
+                    <li><a asp-area="Admin" asp-controller="Events" asp-action="Index">ADMIN</a></li>
+}
                                 <li class="header-search">
                                     <a class="header-search-toggle" href="#"><i class="icofont-search-2"></i></a>
                                     <div class="header-search-form">
@@ -208,5 +210,6 @@
     <script src="~/lib/assets/js/plugins.js"></script>
     <script src="~/lib/assets/js/main.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

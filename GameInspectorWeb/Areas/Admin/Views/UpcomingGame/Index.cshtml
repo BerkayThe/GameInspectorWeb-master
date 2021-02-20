@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Antiforgery
+@inject IAntiforgery Antiforgery
+@model List<UpcomingGames>
+@{ ViewBag.Title = "Upcoming Games";
+    var tokenName = Antiforgery.GetTokens(Context).FormFieldName;
+    var tokenValue = Antiforgery.GetTokens(Context).RequestToken; }
+
+<div class="card">
+    @*<div class="card-header">
+            <h3 class="card-title">DataTable with default features</h3>
+        </div>*@
+    <!-- /.card-header -->
+    <div class="card-body">
+        <a id="linkNew" asp-controller="UpcomingGame" asp-action="New" class="btn btn-secondary"><i class="fas fa-plus"></i>New</a>
+        <table id="dataTable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Cover Photo</th>
+                    <th>Title</th>
+                    <th>Time</th>
+                    <th>Platform</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+    <tr>
+        <td>
+            <img src="~/img/@item.PhotoPath" alt="@item.Title" width="100" />
+        </td>
+        <td>@item.Title</td>
+        <td>@item.Time.ToShortDateString()</td>
+        <td>@item.Platform</td>
+        <td>
+
+            <form class="mb-2">
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                @*<input type="hidden" id="idEdit" value="@item.Id" name="idEdit" />*@
+                @*<input class="btn btn-warning" type="submit" value="Edit" />*@
+            </form>
+            <form asp-action="Delete">
+                <input type="hidden" id="id" value="@item.Id" name="id" />
+                <input class="btn btn-danger" type="submit" value="Delete" />
+            </form>
+        </td>
+    </tr>
+}
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->

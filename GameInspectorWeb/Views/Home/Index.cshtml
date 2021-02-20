@@ -7,19 +7,6 @@
 <html class="no-js" lang="zxx">
 
 
-<!-- Mirrored from demo.hasthemes.com/gilbard-preview/gilbard/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 01 Feb 2021 14:34:41 GMT -->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Home 02 || Gilbard</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <style>
-    </style>
-
-</head>
-
 <body>
 
     <div id="main-wrapper">
@@ -43,56 +30,61 @@
                 <div class="row no-gutters">
                     <div class="col-lg-3">
                         <div class="upcoming-game-area">
-                            <h2>latest and <br> upcoming <br> games</h2>
+                            <h2>upcoming <br> games</h2>
                         </div>
                     </div>
                     <div class="col-lg-9">
                         <div class="upcoming-game-slider">
-                            <div class="single-upcoming-game">
-                                <div class="upcoming-game-img">
-                                    <img src="~/lib/assets/images/game/game3-1.jpg" alt="">
+                            @foreach (var item in ViewBag.UpcomingGames)
+                            {
+                                <div class="single-upcoming-game">
+                                    <div class="upcoming-game-img">
+                                        <img src="~/img/@item.PhotoPath" alt="">
+                                    </div>
+                                    <div class="upcoming-game-content">
+                                        <h4><a href="games.html">@item.Title</a></h4><br />
+                                        <span>@item.Time.ToShortDateString()</span>
+                                        <span class="mr-0 ml-30">@item.Platform</span>
+                                    </div>
                                 </div>
-                                <div class="upcoming-game-content">
-                                    <h4><a href="games.html">mario kart 8,</a></h4>
-                                    <span>released 3 days ago</span>
+                            }
+
+                            @*<div class="single-upcoming-game">
+                                    <div class="upcoming-game-img">
+                                        <img src="~/lib/assets/images/game/game3-2.jpg" alt="">
+                                    </div>
+                                    <div class="upcoming-game-content">
+                                        <h4><a href="games.html">kings of the earch,</a></h4>
+                                        <span>35 views</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="single-upcoming-game">
-                                <div class="upcoming-game-img">
-                                    <img src="~/lib/assets/images/game/game3-2.jpg" alt="">
+                                <div class="single-upcoming-game">
+                                    <div class="upcoming-game-img">
+                                        <img src="~/lib/assets/images/game/game3-3.jpg" alt="">
+                                    </div>
+                                    <div class="upcoming-game-content">
+                                        <h4><a href="#">dead race,</a></h4>
+                                        <span>release on 30 november</span>
+                                    </div>
                                 </div>
-                                <div class="upcoming-game-content">
-                                    <h4><a href="games.html">kings of the earch,</a></h4>
-                                    <span>35 views</span>
+                                <div class="single-upcoming-game">
+                                    <div class="upcoming-game-img">
+                                        <img src="~/lib/assets/images/game/game3-4.jpg" alt="">
+                                    </div>
+                                    <div class="upcoming-game-content">
+                                        <h4><a href="games.html">Advanture kenton,</a></h4>
+                                        <span>665 download</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="single-upcoming-game">
-                                <div class="upcoming-game-img">
-                                    <img src="~/lib/assets/images/game/game3-3.jpg" alt="">
-                                </div>
-                                <div class="upcoming-game-content">
-                                    <h4><a href="#">dead race,</a></h4>
-                                    <span>release on 30 november</span>
-                                </div>
-                            </div>
-                            <div class="single-upcoming-game">
-                                <div class="upcoming-game-img">
-                                    <img src="~/lib/assets/images/game/game3-4.jpg" alt="">
-                                </div>
-                                <div class="upcoming-game-content">
-                                    <h4><a href="games.html">Advanture kenton,</a></h4>
-                                    <span>665 download</span>
-                                </div>
-                            </div>
-                            <div class="single-upcoming-game">
-                                <div class="upcoming-game-img">
-                                    <img src="~/lib/assets/images/game/game3-2.jpg" alt="">
-                                </div>
-                                <div class="upcoming-game-content">
-                                    <h4><a href="games.html">mario kart 8,</a></h4>
-                                    <span>released 3 days ago</span>
-                                </div>
-                            </div>
+                                <div class="single-upcoming-game">
+                                    <div class="upcoming-game-img">
+                                        <img src="~/lib/assets/images/game/game3-2.jpg" alt="">
+                                    </div>
+                                    <div class="upcoming-game-content">
+                                        <h4><a href="games.html">mario kart 8,</a></h4>
+                                        <span>released 3 days ago</span>
+                                    </div>
+                                </div>*@
                         </div>
                     </div>
                 </div>
@@ -701,12 +693,10 @@
             </div>
         </div>
 
-            <div class="text-center spinner-border d-flex mx-auto"  id="progress" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
 
-        <!--Blog Area End-->
     </div>
+    <!--Blog Area End-->
+
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript">
 
@@ -733,6 +723,11 @@
                 url: '/Home/GetData',
                 data: { "pageindex": pageIndex, "pagesize": pageSize },
                 dataType: 'json',
+                beforeSend: function () {
+                    $("#main-wrapper").append(`<div class="spinner-border d-flex mx-auto" id="progress" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>`);
+                },
                 success: function (data) {
                     var element = "";
                     console.log(data)
@@ -765,11 +760,8 @@
                             pageIndex++;
                     }
                 },
-                beforeSend:function () {
-                    $("#progress").show();
-                },
                 complete: function () {
-                    $("#progress").hide();
+                    $("#progress").remove()
                 },
                 error: function () {
                     alert("Error while retrieving data!");

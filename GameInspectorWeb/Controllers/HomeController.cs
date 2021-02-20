@@ -24,6 +24,8 @@ namespace GameInspectorWeb.Controllers
 
         public IActionResult Index(int pageIndex = 0, int pageSize = 6)
         {
+            ViewBag.UpcomingGames = _db.UpcomingGames.Take(10).ToList();
+
             ViewBag.Kategori = _db.Categories.Select(x => x.CategoryName).ToList();
 
             ViewBag.Art = _db.Articles.OrderByDescending(x => x.Time).Take(5).ToList();

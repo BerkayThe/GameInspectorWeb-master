@@ -1,0 +1,83 @@
+﻿@model EditUpcomingGameViewModel
+@{ ViewData["Title"] = "Edit Upcoming Game"; }
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-6">
+        <div class="card card-primary">
+            @*<div class="card-header">
+                    <h3 class="card-title">Quick Example</h3>
+                </div>*@
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="Title">Title</label>
+                        <input asp-for="Title" class="form-control" placeholder="Title" data-slugify-target="#Slug">
+                        <span asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Platform">Platforms</label>
+                        <input asp-for="Platform" class="form-control" placeholder="Platforms">
+                        <span asp-validation-for="Platform"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Time">Time</label>
+                        <div class="input-group date" id="upcomingTime" data-target-input="nearest">
+                            <input asp-for="Time" type="text" class="form-control datetimepicker-input" data-target="#upcomingTime" />
+                            <div class="input-group-append" data-target="#upcomingTime" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <span asp-validation-for="Time"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <div>
+                            <input type="hidden" asp-for="PhotoPath" />
+                            @{ string showPreview = string.IsNullOrEmpty(Model.PhotoPath) ? "display: none" : "";}
+
+                            <img src="~/img/@Model.PhotoPath" alt="@Model.Title" height="100" style="@showPreview" class="edit-metting-photo-preview img-thumbnail mb-2" id="img-preview" />
+
+                        </div>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input asp-for="Photo" class="custom-file-input" id="exampleInputFile" data-preview-image-target="#img-preview">
+                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            </div>
+                        </div>
+                        <span asp-validation-for="Photo"></span>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /.card -->
+
+@section scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        bsCustomFileInput.init();
+
+        var d = new Date();
+
+        $('#upcomingTime').datetimepicker({
+            icons: {
+                time: 'fas fa-clock'
+            },
+            format: 'DD.MM.YYYY',
+            defaultDate: d
+        });
+    </script>
+
+}

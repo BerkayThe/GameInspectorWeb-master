@@ -191,7 +191,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
+    with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-external-link-alt"></i>
@@ -250,6 +250,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <a asp-controller="Category" asp-action="Index" class="nav-link">
                                         <i class="fas fa-list nav-icon"></i>
                                         <p>Kategorileri Listele</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-archive"></i>
+                                <p>
+                                    Yeni Çıkacak Oyunlar
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-controller="UpcomingGame" asp-action="New" class="nav-link">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Yeni Oyun Ekle</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="UpcomingGame" asp-action="Index" class="nav-link">
+                                        <i class="fas fa-list nav-icon"></i>
+                                        <p>Çıkacak Oyunları Listele</p>
                                     </a>
                                 </li>
                             </ul>
