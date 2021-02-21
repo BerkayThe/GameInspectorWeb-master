@@ -37,6 +37,8 @@ namespace GameInspectorWeb.Controllers
         [HttpGet]
         public IActionResult ArticleContent(int id)
         {
+            ViewBag.ContentPhotos = _db.Articles.Select(x => x.ContentPhotosPaths).ToList();
+
             if (id != 0)
             {
                 var data = _db.Articles.Find(id);

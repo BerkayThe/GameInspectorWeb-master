@@ -8,6 +8,15 @@
 
 
 <body>
+    <style>
+        .boranAga {
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+    </style>
 
     <div id="main-wrapper">
 
@@ -697,6 +706,8 @@
                     console.log(data)
                     if (data != null) {
                         for (var i = 0; i < data.length; i++) {
+                            var d = new Date();
+                            var curr_date = d.getDate(data[i].time) + "/" + d.getMonth(data[i].time + "1") + "/" + d.getFullYear(data[i].time);
                              element += `<div class="col-md-6 post-item">
                                                         <!--Single Blog Post Start-->
                                                         <div class="single-blog-post mb-30">
@@ -705,10 +716,10 @@
                                                             </div>
                                                             <div class="blog-content">
                                                                 <h3><a href="single-blog.html">${data[i].title}</a></h3>
-                                                                <p rows="3">${data[i].content}</p>
+                                                                <p class="boranAga">${data[i].content}</p>
                                                                 <ul class="meta">
                                                                     <li><a href="#">Admin</a></li>
-                                                                    <li>${data[i].time}</li>
+                                                                    <li>${curr_date}</li>
                                                                     <li><a href="#">25 Comments</a></li>
                                                                 </ul>
                                                                 </div>

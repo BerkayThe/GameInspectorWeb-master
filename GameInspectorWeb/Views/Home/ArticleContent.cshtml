@@ -7,7 +7,6 @@
         actionName = "_ContentLayout";
     }
 
-    //Layout = "~/Views/Shared/_ContentLayout.cshtml";
     ViewData["Title"] = "Game Inspector";
 }
 <!doctype html>
@@ -37,114 +36,188 @@
             </div>
         </div>
         <!--Page Banner Area End-->
-        <!--Blog Area Start-->
-        <div class="blog-details-area section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-xs-50">
+        <div class="games-details-area section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-xs-45">
             <div class="container">
-                <div class="row row-25">
+                <div class="row">
                     <div class="col-lg-8">
                         <div class="row">
                             <div class="col-12">
-                                <div class="blog-details">
-                                    <div class="blog-img">
-                                        <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-details-1.jpg" alt=""></a>
-                                        <div class="meta-box">
-                                            <ul class="meta meta-border-bottom">
-                                                <li><a href="#">Smith</a></li>
-                                                <li>15 Devember, 2018 </li>
-                                                <li><a href="#">25 Comments</a></li>
-                                            </ul>
-                                        </div>
+                                <div class="game-image-gallery-wrap">
+                                    <div class="game-image-large">
+                                        @foreach (var item in Model.ContentPhotosPaths.Split(','))
+                                        {
+                                            <div class="game-image img-full">
+                                                <img src="/img/@item" width="750" height="375" alt="">
+                                            </div>
+                                        }
                                     </div>
-                                    <div class="blog-content">
-                                        <h3>latest version of angry birds released in 2019</h3>
+                                    <div class="game-image-thumbs">
+                                        @foreach (var item in Model.ContentPhotosPaths.Split(','))
+                                        {
+                                            <div class="sm-image">
+                                                <img src="~/img/@item" width="248" height="176" alt="product image thumb">
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="game-description mb-35">
+                                        <h3>the witchrer 3 reloded</h3>
                                         <p><strong>Need for Sped</strong> rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally tances occur in which toil and pain can procure him some great pleasure pleasure rationally encounter sequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain itsuse it is pain, but because occasionally circumstances occur in which toil and pain can procure </p>
                                         <p>Rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally tances occur in which toil and pain can procure him some great pleasure pleasure rationally encounte</p>
-                                        <blockquote class="blockquote mt-30 mb-30">
-                                            <p>Rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because  nally tances occur in which toil and pain can procure </p>
-                                        </blockquote>
-                                        <p>Rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or ues or desires to obtain pain of itself, because it is pain, but because occasionally tances occur in which toil and pain can procure him some great pleasure pleasure rationally encounte</p>
-                                        <div class="blog-tags">
-                                            <h5>Tags:</h5>
-                                            <a href="#">Games</a>
-                                            <a href="#">Playstation</a>
-                                            <a href="#">Xbox</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <blockquote class="blockquote mr-70 mt-10 mb-20">
+                                    <p>Rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because  nally tances occur in which toil and pain can procure </p>
+                                </blockquote>
+                                @*<div class="timelaine-wrapper mb-30">
+                                        <div class="single-timeline pb-30">
+                                            <h4>the story behiend the game</h4>
+                                            <p>Rationally encounter consequences that are extremely painful. Nor again is there anyone oves or pursues or desires to obtain pain of itself, because it is pain, but because sionally tances occur in which toil and pain can procure him some great pleasure pleasure </p>
+                                        </div>
+                                    </div>*@
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="ratting-wrap mb-40">
+                                    <h3>ratings</h3>
+                                    <div class="rating-area">
+                                        <div class="total-rating">
+                                            <h2>4.82</h2>
+                                            <span>(4.8 out of 5)</span>
+                                        </div>
+                                        <div class="rating-review">
+                                            <div class="single-rating">
+                                                <div class="rating-star">
+                                                    <span>5</span>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-progress">
+                                                    <div class="progress">
+                                                        <div class="progress-bar wow fadeInLeft" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" data-wow-duration="1.5s" data-wow-delay="1.2s"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="rating-count">
+                                                    <span>980</span>
+                                                </div>
+                                            </div>
+                                            <div class="single-rating">
+                                                <div class="rating-star">
+                                                    <span>4</span>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-progress">
+                                                    <div class="progress">
+                                                        <div class="progress-bar wow fadeInLeft" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" data-wow-duration="1.5s" data-wow-delay="1.2s"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="rating-count">
+                                                    <span>280</span>
+                                                </div>
+                                            </div>
+                                            <div class="single-rating">
+                                                <div class="rating-star">
+                                                    <span>3</span>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-progress">
+                                                    <div class="progress">
+                                                        <div class="progress-bar wow fadeInLeft" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" data-wow-duration="1.5s" data-wow-delay="1.2s"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="rating-count">
+                                                    <span>89</span>
+                                                </div>
+                                            </div>
+                                            <div class="single-rating">
+                                                <div class="rating-star">
+                                                    <span>2</span>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-progress">
+                                                    <div class="progress">
+                                                        <div class="progress-bar wow fadeInLeft" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" data-wow-duration="1.5s" data-wow-delay="1.2s"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="rating-count">
+                                                    <span>25</span>
+                                                </div>
+                                            </div>
+                                            <div class="single-rating">
+                                                <div class="rating-star">
+                                                    <span>1</span>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-progress">
+                                                    <div class="progress">
+                                                        <div class="progress-bar wow fadeInLeft" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" data-wow-duration="1.5s" data-wow-delay="1.2s"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="rating-count">
+                                                    <span>25</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="blog-comment-wrap col">
-                                <h4>Comments</h4>
-                                <ul class="comment-list">
-                                    <li>
-                                        <div class="single-comment">
-                                            <div class="image"><img src="~/lib/assets/images/blog/comment-1.jpg" alt=""></div>
-                                            <div class="content">
-                                                <h5>sannai smith</h5>
-                                                <div class="review-date">
-                                                    <span>30 Janurary, 2018</span>
-                                                    <a href="#" class="reply">Reply</a>
-                                                </div>
-                                                <p>Ationally encounter consequences that are extremely painful. Nor again is there me anyone who loves or pursues or desires to obtain pain</p>
-                                            </div>
+                            <div class="col-12">
+                                <div class="review-wrap">
+                                    <h3>reviews(120)</h3>
+                                    <!--Single Review Start-->
+                                    <div class="single-review mb-30">
+                                        <h4>Best action game play ever</h4>
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
                                         </div>
-                                        <ul class="children">
-                                            <li>
-                                                <div class="single-comment">
-                                                    <div class="image"><img src="~/lib/assets/images/blog/comment-2.jpg" alt=""></div>
-                                                    <div class="content">
-                                                        <h5>Alica Nicolus</h5>
-                                                        <div class="review-date">
-                                                            <span>13 December, 2018</span>
-                                                            <a href="#" class="reply">Reply</a>
-                                                        </div>
-                                                        <p>Ationally encounter consequences that are extremely painful. Nor again is there me anyone who loves or pursues or desires to obtain pain</p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="single-comment">
-                                            <div class="image"><img src="~/lib/assets/images/blog/comment-1.jpg" alt=""></div>
-                                            <div class="content">
-                                                <h5>Lisa Rose</h5>
-                                                <div class="review-date">
-                                                    <span>10 December, 2018</span>
-                                                    <a href="#" class="reply">Reply</a>
-                                                </div>
-                                                <p>Ationally encounter consequences that are extremely painful. Nor again is there me anyone who loves or pursues or desires to obtain pain</p>
-                                            </div>
+                                        <p>The Witcher 3 is the best action game that i play ever. encounter consequences that are mely painful. Nor again is there me anyone who loves or pursues or desires take a trivial meaning less sexample, which of us ever undertakes laborious physical exercise.</p>
+                                        <div class="review-name-action">
+                                            <a href="#">Adam Smith</a>
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-thumbs-o-up"></i>425</a></li>
+                                                <li><a href="#"><i class="fa fa-thumbs-o-down"></i>65</a></li>
+                                            </ul>
                                         </div>
-                                    </li>
-                                </ul>
-                                <h4>Leave a reply</h4>
-                                <form action="#" class="comment-form">
-                                    <div class="row">
-                                        <div class="col-md-6 col-12 mb-30">
-                                            <input type="text" name="name" placeholder="Name">
-                                        </div>
-
-                                        <div class="col-md-6 col-12 mb-30">
-                                            <input type="email" name="email" placeholder="Email">
-                                        </div>
-
-                                        <div class="col-12 mb-30">
-                                            <textarea name="message" placeholder="Message"></textarea>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <input type="submit" value="send now">
-                                        </div>
-
                                     </div>
-                                </form>
+                                    <!--Single Review End-->
+                                    <!--Single Review Start-->
+                                    <div class="single-review mb-30">
+                                        <h4>Really love this game</h4>
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                        </div>
+                                        <p>The Witcher 3 is the best action game that i play ever. encounter consequences that are mely painful. Nor again is there me anyone who loves or pursues or desires take a trivial meaning less sexample, which of us ever undertakes laborious physical exercise.</p>
+                                        <div class="review-name-action">
+                                            <a href="#">Thomas Morgan</a>
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-thumbs-o-up"></i>425</a></li>
+                                                <li><a href="#"><i class="fa fa-thumbs-o-down"></i>65</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--Single Review End-->
+                                    <div class="reply-btn">
+                                        <a href="#">view more <i class="icofont-long-arrow-right"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="sidebar-area mt-sm-60 mt-xs-50">
+                        <div class="sidebar-area mt-sm-50 mt-xs-50">
                             <!--Single Sidebar Widget Start-->
                             <div class="single-sidebar-widget mb-45">
                                 <h3>featured games</h3>
@@ -270,6 +343,7 @@
                 </div>
             </div>
         </div>
+        <!--Games Details Area End-->
         <!--Blog Area End-->
 
     </div>
