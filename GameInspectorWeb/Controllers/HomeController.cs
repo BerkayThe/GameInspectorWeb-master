@@ -34,6 +34,20 @@ namespace GameInspectorWeb.Controllers
             return View(vm);
         }
 
+        [HttpGet]
+        public IActionResult ArticleContent(int id)
+        {
+            if (id != 0)
+            {
+                var data = _db.Articles.Find(id);
+                if (data != null)
+                {
+                    return View(data);
+                }
+            }
+            return NotFound();
+        }
+
         public IActionResult Privacy()
         {
             return View();
