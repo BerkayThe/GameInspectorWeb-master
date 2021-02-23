@@ -21,8 +21,14 @@
 
     <!-- Modernizr JS -->
     <script src="~/lib/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
+
 </head>
-<body>
+<body style=" background:rgba(0,0,0, 0.7);
+      font-size: 14px;
+      color: #fff;
+      background: url( /lib/assets/images/game/ds3-bg.jpg) no-repeat center top fixed;
+      background-size: 100% 100%;">
 
     <!--Header section start-->
     <header class="header header-static bg-black header-sticky">
@@ -42,9 +48,9 @@
                         <nav class="main-menu menu-style-2">
                             <ul>
                                 <li>
-                                    <a href="index.html">Home</a>
+                                    <a asp-controller="Home" asp-action="Index">Home</a>
                                     <ul class="sub-menu">
-                                        <li><a href="index.html">Home One</a></li>
+                                        <li><a href="index-1.html">Home One</a></li>
                                         <li><a href="index-2.html">Home Two</a></li>
                                         <li><a href="index-3.html">Home Three</a></li>
                                         <li><a href="index-4.html">Home Four</a></li>
@@ -98,8 +104,8 @@
                                 <li><a href="register.html">REGISTER</a></li>
                                 @if (User.IsInRole("admin"))
                                 {
-                    <li><a asp-area="Admin" asp-controller="Events" asp-action="Index">ADMIN</a></li>
-}
+                                    <li><a asp-area="Admin" asp-controller="Events" asp-action="Index">ADMIN</a></li>
+                                }
                                 <li class="header-search">
                                     <a class="header-search-toggle" href="#"><i class="icofont-search-2"></i></a>
                                     <div class="header-search-form">

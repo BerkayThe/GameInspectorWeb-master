@@ -68,8 +68,8 @@
         <div class="blog-area section pb-xs-50">
             <div class="container container-1520">
                 <div class="row">
-                    <div class="col-lg-9">
-                        <div class="row">
+                    <div class="col-lg-9" style="background:rgba(0,0,0, 0.7)">
+                        <div class="row" >
                             <div class="col-12">
                                 <!--Section Title Start-->
                                 <div class="section-title">
@@ -89,7 +89,7 @@
                         <div class="row row-7">
                             <div class="tab-content">
                                 <div id="all" class="tab-pane fade show active">
-                                    <div class="row row-7" id="scrollPage">
+                                    <div class="row row-7" id="scrollPage" style="color:#C0C0C0; font-weight: bold;">
                                         <!--Javascript code below-->
                                     </div>
                                 </div>
@@ -708,15 +708,15 @@
                         for (var i = 0; i < data.length; i++) {
                             var d = new Date();
                             var curr_date = d.getDate(data[i].time) + "/" + d.getMonth(data[i].time + "1") + "/" + d.getFullYear(data[i].time);
-                             element += `<div class="col-md-6 post-item">
+                            element += `<div class="col-md-6 post-item">
                                                         <!--Single Blog Post Start-->
                                                         <div class="single-blog-post mb-30">
                                                             <div class="blog-img">
                                                                 <a href="Home/ArticleContent/${data[i].id}"><img src="/img/${data[i].coverPhotoPath}" width="555" height="313" alt=""></a>
                                                             </div>
                                                             <div class="blog-content">
-                                                                <h3><a href="single-blog.html">${data[i].title}</a></h3>
-                                                                <p class="boranAga">${data[i].content}</p>
+                                                                <h3><a href="single-blog.html" style="color:#CC0066;">${data[i].title}</a></h3>
+                                                                <p class="boranAga" style="">${data[i].content}</p>
                                                                 <ul class="meta">
                                                                     <li><a href="#">Admin</a></li>
                                                                     <li>${curr_date}</li>

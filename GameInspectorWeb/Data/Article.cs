@@ -27,7 +27,7 @@ namespace GameInspectorWeb.Data
         [Display(Name = "Karakter Tanıtım")]
         public string CharacterContent { get; set; }
 
-        public DateTime? Time { get; set; } = DateTime.Now;
+        public DateTime? Time { get; set; }
         [NotMapped]
         public IFormFile CoverPhoto { get; set; }
 
