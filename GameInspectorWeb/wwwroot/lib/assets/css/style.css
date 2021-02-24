@@ -159,9 +159,39 @@ img {
     height: 200px !important; } }
 
 /*-- 
+    - Aside Bar Style
+-----------------------------------------*/
+.sticky {
+    position: initial;
+    right: 0;
+    top: 0;
+    width: 300px;
+}
+
+@media only screen and (min-width: 796px) and (max-width:1200px) {
+    .sticky {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 300px;
+    }
+}
+
+@media only screen and (min-width:1250px) {
+    .sticky {
+        position: fixed;
+        right: 0;
+        margin-right: 350px;
+        top: 0;
+        width: 300px;
+    }
+}
+
+
+/*-- 
     - Common Classes
 -----------------------------------------*/
-.fix {
+    .fix {
   overflow: hidden; }
 
 .hidden {
@@ -899,6 +929,8 @@ header.header {
   top: 0;
   width: 100%;
   z-index: 999; }
+
+
   header.header.is-sticky {
     position: fixed;
     -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -4911,8 +4943,9 @@ header.header.header-static {
 -----------------------------------------*/
 /*-- Sidebar css --*/
 .sidebar-area {
-  background-color: #f1f1f1;
-  padding: 30px 20px; }
+    background: rgba(0,0,0, 0.6);
+    padding: 0px 12px;
+}
 
 .single-sidebar-widget h3 {
   font-size: 24px;

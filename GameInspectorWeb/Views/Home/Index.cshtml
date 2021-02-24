@@ -68,8 +68,8 @@
         <div class="blog-area section pb-xs-50">
             <div class="container container-1520">
                 <div class="row">
-                    <div class="col-lg-9" style="background:rgba(0,0,0, 0.7)">
-                        <div class="row" >
+                    <div class="col-lg-9" style="background:rgba(0,0,0, 0.6)">
+                        <div class="row">
                             <div class="col-12">
                                 <!--Section Title Start-->
                                 <div class="section-title">
@@ -657,10 +657,9 @@
                         </div>
 
                     </div>
-
-                    <aside class="col-lg-3">
+                    @*Rightbar*@
+                    <aside id="rightBar" class="col-3 menu sticky-top">
                         <partial name="_RightPartial" />
-                        @*@Html.Partial("_RightPartial")*@
                     </aside>
                 </div>
             </div>
@@ -706,8 +705,9 @@
                     console.log(data)
                     if (data != null) {
                         for (var i = 0; i < data.length; i++) {
-                            var d = new Date();
-                            var curr_date = d.getDate(data[i].time) + "/" + d.getMonth(data[i].time + "1") + "/" + d.getFullYear(data[i].time);
+                            //var d = new Date();
+                            //var curr_date = d.getDate(data[i].time) + "/" + d.getMonth(data[i].time + "1") + "/" + d.getFullYear(data[i].time);
+
                             element += `<div class="col-md-6 post-item">
                                                         <!--Single Blog Post Start-->
                                                         <div class="single-blog-post mb-30">
@@ -719,7 +719,8 @@
                                                                 <p class="boranAga" style="">${data[i].content}</p>
                                                                 <ul class="meta">
                                                                     <li><a href="#">Admin</a></li>
-                                                                    <li>${curr_date}</li>
+
+                                                                        <li>${new Date(data[i].time).toLocaleDateString()}</li>
                                                                     <li><a href="#">25 Comments</a></li>
                                                                 </ul>
                                                                 </div>
@@ -744,6 +745,21 @@
             });
         }
 
+
+
+
+
+
+    </script>
+    <script>
+        $(window).scroll(function () {
+            var navbar = document.getElementById("rightBar");
+            if (window.pageYOffset >= 696) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        })
     </script>
 </body>
 
