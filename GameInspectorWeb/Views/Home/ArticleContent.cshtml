@@ -1,4 +1,5 @@
-﻿@model Article
+﻿@using Microsoft.AspNetCore.Identity
+@model Article
 @{
     //var actionName = ViewContext.RouteData.Values["action"].ToString();
 
@@ -61,10 +62,20 @@
                                         <h3 style="color:#AB966F;">the witchrer 3 reloded</h3>
                                         <p><strong>Need for Sped</strong> rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally tances occur in which toil and pain can procure him some great pleasure pleasure rationally encounter sequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain itsuse it is pain, but because occasionally circumstances occur in which toil and pain can procure </p>
                                         <p>Rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally tances occur in which toil and pain can procure him some great pleasure pleasure rationally encounte</p>
+
+                                        @if (!string.IsNullOrEmpty(Model.VideoPath))
+                                        {
+                                            <h1 style="color:#AB966F;">Tam Çözüm</h1>
+                                            <!--Single Video Popup Start-->
+                                            <iframe width="560" height="315" src="@Model.VideoPath" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            <!--Single Video Popup End-->
+                                        }
+
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-12">
                                 <blockquote class="blockquote mr-70 mt-10 mb-20" style="background: rgba(96,96,96, 0.7)">
@@ -166,46 +177,52 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="review-wrap">
-                                    <h3>reviews(120)</h3>
+                                    <h3>Yorumlar(@ViewBag.GetComments.Count)</h3>
                                     <!--Single Review Start-->
-                                    <div class="single-review mb-30">
-                                        <h4>Best action game play ever</h4>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
+
+                                    @foreach (var item in ViewBag.GetComments)
+                                    {
+                                        <div class="single-review mb-30">
+                                            <h4>Best action game play ever</h4>
+                                            <div class="ratting">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-o"></i>
+                                            </div>
+                                            <p>@item.CommentContent</p>
+                                            <div class="review-name-action">
+                                                <a href="#">@item.Author.FirstName @item.Author.LastName</a>
+                                                <ul>
+                                                    <li><a href="#"><i class="fa fa-thumbs-o-up"></i>425</a></li>
+                                                    <li><a href="#"><i class="fa fa-thumbs-o-down"></i>65</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <p>The Witcher 3 is the best action game that i play ever. encounter consequences that are mely painful. Nor again is there me anyone who loves or pursues or desires take a trivial meaning less sexample, which of us ever undertakes laborious physical exercise.</p>
-                                        <div class="review-name-action">
-                                            <a href="#">Adam Smith</a>
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-thumbs-o-up"></i>425</a></li>
-                                                <li><a href="#"><i class="fa fa-thumbs-o-down"></i>65</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!--Single Review End-->
-                                    <!--Single Review Start-->
-                                    <div class="single-review mb-30">
-                                        <h4>Really love this game</h4>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </div>
-                                        <p>The Witcher 3 is the best action game that i play ever. encounter consequences that are mely painful. Nor again is there me anyone who loves or pursues or desires take a trivial meaning less sexample, which of us ever undertakes laborious physical exercise.</p>
-                                        <div class="review-name-action">
-                                            <a href="#">Thomas Morgan</a>
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-thumbs-o-up"></i>425</a></li>
-                                                <li><a href="#"><i class="fa fa-thumbs-o-down"></i>65</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    }
+
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <h3>Yorum Ekle</h3>
+                                        <form method="post" class="comment-form">
+
+                                            <div class="row">
+                                                <div class="col-12 mb-30">
+                                                    <textarea name="CommentContent" id="CommentContent" placeholder="Buraya Yaz Uleeeeee"></textarea>
+                                                </div>
+
+                                                <div class="col-12">
+                                                    <input type="submit" asp-action="ArticleContent" asp-controller="Home" value="send now">
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <a asp-area="Identity" asp-route-returnUrl="@Context.Request.Path.Value" asp-page="/Account/Login">Yorum yapmak için giriş yapmalısınız.</a>
+                                    }
                                     <!--Single Review End-->
                                     <div class="reply-btn">
                                         <a href="#">view more <i class="icofont-long-arrow-right"></i></a>
@@ -214,128 +231,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="sidebar-area mt-sm-50 mt-xs-50">
-                            <!--Single Sidebar Widget Start-->
-                            <div class="single-sidebar-widget mb-45">
-                                <h3>featured games</h3>
-                                <div class="single-featured-game mb-20">
-                                    <div class="game-img">
-                                        <a href="#"><img src="~/lib/assets/images/banner/sidebar-banner1.jpg" alt=""></a>
-                                        <a class="game-title" href="#">the killer</a>
-                                    </div>
-                                </div>
-                                <div class="single-featured-game mb-20">
-                                    <div class="game-img">
-                                        <a href="#"><img src="~/lib/assets/images/banner/sidebar-banner2.jpg" alt=""></a>
-                                        <a class="game-title" href="#">muscle cars</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Single Sidebar Widget End-->
-                            <!--Single Sidebar Widget Start-->
-                            <div class="single-sidebar-widget mb-45">
-                                <h3>follow us</h3>
-                                <div class="sidebar-social">
-                                    <ul>
-                                        <li><a class="facebook" href="#"><i class="icofont-facebook"></i></a></li>
-                                        <li><a class="youtube" href="#"><i class="icofont-youtube-play"></i></a></li>
-                                        <li><a class="instagram" href="#"><i class="icofont-instagram"></i></a></li>
-                                        <li><a class="twitter" href="#"><i class="icofont-twitter"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--Single Sidebar Widget End-->
-                            <!--Single Sidebar Widget Start-->
-                            <div class="single-sidebar-widget mb-45">
-                                <h3>popular/recomended</h3>
-                                <div class="popular-game mb-20">
-                                    <div class="game-img">
-                                        <a href="#"><img src="~/lib/assets/images/banner/sidebar-banner3.jpg" alt=""></a>
-                                    </div>
-                                    <div class="game-content">
-                                        <h3><a href="#">Splinter cell</a></h3>
-                                        <span>pc/xbox/ps4</span>
-                                    </div>
-                                </div>
-                                <div class="popular-game mb-20">
-                                    <div class="game-img">
-                                        <a href="#"><img src="~/lib/assets/images/banner/sidebar-banner4.jpg" alt=""></a>
-                                    </div>
-                                    <div class="game-content">
-                                        <h3><a href="#">battle field 4</a></h3>
-                                        <span>pc/xbox/ps4</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Single Sidebar Widget End-->
-                            <!--Single Sidebar Widget Start-->
-                            <div class="single-sidebar-widget mb-45">
-                                <h3>recent post</h3>
-                                <div class="sidebar-rc-post">
-                                    <ul>
-                                        <li>
-                                            <div class="rc-post-thumb">
-                                                <a href="#"><img src="~/lib/assets/images/rc-img/rc-img1.jpg" alt=""></a>
-                                            </div>
-                                            <div class="rc-post-content">
-                                                <h3><a href="#">latest update of the new version</a></h3>
-                                                <div class="widget-date">05 November, 2018</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="rc-post-thumb">
-                                                <a href="#"><img src="~/lib/assets/images/rc-img/rc-img2.jpg" alt=""></a>
-                                            </div>
-                                            <div class="rc-post-content">
-                                                <h3><a href="#">Crew in the earth get new season</a></h3>
-                                                <div class="widget-date">08 November, 2018</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="rc-post-thumb">
-                                                <a href="#"><img src="~/lib/assets/images/rc-img/rc-img3.jpg" alt=""></a>
-                                            </div>
-                                            <div class="rc-post-content">
-                                                <h3><a href="#">secrect code for the Mortal Kombat 4</a></h3>
-                                                <div class="widget-date">05 November, 2018</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="rc-post-thumb">
-                                                <a href="#"><img src="~/lib/assets/images/rc-img/rc-img4.jpg" alt=""></a>
-                                            </div>
-                                            <div class="rc-post-content">
-                                                <h3><a href="#">need for speed have new challenge</a></h3>
-                                                <div class="widget-date">02 November, 2018</div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--Single Sidebar Widget End-->
-                            <!--Single Sidebar Widget Start-->
-                            <div class="single-sidebar-widget mb-45">
-                                <div class="sidebar-banner">
-                                    <a href="#"><img src="~/lib/assets/images/banner/banner2.jpg" alt=""></a>
-                                </div>
-                            </div>
-                            <!--Single Sidebar Widget End-->
-                            <!--Single Sidebar Widget Start-->
-                            <div class="single-sidebar-widget">
-                                <h3>follow us</h3>
-                                <div class="sidebar-instagram">
-                                    <ul>
-                                        <li><a href="#"><img src="~/lib/assets/images/instagram/instagram1.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="~/lib/assets/images/instagram/instagram2.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="~/lib/assets/images/instagram/instagram3.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="~/lib/assets/images/instagram/instagram4.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="~/lib/assets/images/instagram/instagram5.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="~/lib/assets/images/instagram/instagram6.jpg" alt=""></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--Single Sidebar Widget End-->
+                    <div class="col-lg-3">
+                        <div class="mb-2 sticky-top">
+                            <partial name="_RightPartial" />
                         </div>
                     </div>
                 </div>

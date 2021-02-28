@@ -163,27 +163,22 @@ img {
 -----------------------------------------*/
 .sticky {
     position: initial;
-    right: 0;
     top: 0;
-    width: 300px;
 }
 
 @media only screen and (min-width: 796px) and (max-width:1200px) {
     .sticky {
-        position: fixed;
-        right: 0;
+        position: sticky;
         top: 0;
         width: 300px;
+        
     }
 }
 
 @media only screen and (min-width:1250px) {
     .sticky {
-        position: fixed;
-        right: 0;
-        margin-right: 350px;
+        position: sticky;
         top: 0;
-        width: 300px;
     }
 }
 
@@ -4943,7 +4938,6 @@ header.header.header-static {
 -----------------------------------------*/
 /*-- Sidebar css --*/
 .sidebar-area {
-    background: rgba(0,0,0, 0.6);
     padding: 0px 12px;
 }
 

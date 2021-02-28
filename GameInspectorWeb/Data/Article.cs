@@ -13,6 +13,7 @@ namespace GameInspectorWeb.Data
         public Article()
         {
             ArticleCategories = new HashSet<ArticleCategory>();
+            Comments = new HashSet<Comment>();
         }
         public int Id { get; set; }
 

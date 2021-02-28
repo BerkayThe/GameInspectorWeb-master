@@ -15,6 +15,9 @@ namespace GameInspectorWeb.Data
         [Display(Name = "Yorum İçeriği")]
         public string CommentContent { get; set; }
 
+        [ForeignKey("Author")]
+        public string ApplicationUserId { get; set; }
+
         public int ArticleId { get; set; }
 
         public virtual ApplicationUser Author { get; set; }

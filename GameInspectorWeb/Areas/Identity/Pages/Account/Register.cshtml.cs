@@ -52,8 +52,11 @@ namespace GameInspectorWeb.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [MaxLength(50)]
+            [Required]
+
             public string FirstName { get; set; }
             [MaxLength(50)]
+            [Required]
             public string LastName { get; set; }
 
             [Required]

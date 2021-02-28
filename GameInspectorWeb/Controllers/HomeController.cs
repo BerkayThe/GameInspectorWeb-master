@@ -1,12 +1,14 @@
 ﻿using GameInspectorWeb.Data;
 using GameInspectorWeb.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace GameInspectorWeb.Controllers
@@ -37,7 +39,7 @@ namespace GameInspectorWeb.Controllers
         [HttpGet]
         public IActionResult ArticleContent(int id)
         {
-            ViewBag.ContentPhotos = _db.Articles.Select(x => x.ContentPhotosPaths).ToList();
+            ViewBag.GetComments = _db.Comments.Include("Author").ToList();
 
             if (id != 0)
             {
@@ -48,6 +50,20 @@ namespace GameInspectorWeb.Controllers
                 }
             }
             return NotFound();
+        }
+
+        [HttpPost]
+        public IActionResult ArticleContent(Comment comment)
+        {
+            comment.ApplicationUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            comment.ArticleId = comment.Id;
+            comment.Id = 0;
+            if (ModelState.IsValid)
+            {
+                _db.Comments.Add(comment);
+                _db.SaveChanges();
+            }
+            return RedirectToAction("ArticleContent", new { id = comment.ArticleId });
         }
 
         public IActionResult Privacy()
