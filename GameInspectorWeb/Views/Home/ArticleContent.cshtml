@@ -177,10 +177,10 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="review-wrap">
-                                    <h3>Yorumlar(@ViewBag.GetComments.Count)</h3>
+                                    <h3>Yorumlar(@Model.Comments.Count)</h3>
                                     <!--Single Review Start-->
 
-                                    @foreach (var item in ViewBag.GetComments)
+                                    @foreach (var item in Model.Comments)
                                     {
                                         <div class="single-review mb-30">
                                             <h4>Best action game play ever</h4>
@@ -201,6 +201,28 @@
                                             </div>
                                         </div>
                                     }
+
+                                    @*@foreach (var item in ViewBag.GetComments)
+                                        {
+                                            <div class="single-review mb-30">
+                                                <h4>Best action game play ever</h4>
+                                                <div class="ratting">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-half-o"></i>
+                                                </div>
+                                                <p>@item.CommentContent</p>
+                                                <div class="review-name-action">
+                                                    <a href="#">@item.Author.FirstName @item.Author.LastName</a>
+                                                    <ul>
+                                                        <li><a href="#"><i class="fa fa-thumbs-o-up"></i>425</a></li>
+                                                        <li><a href="#"><i class="fa fa-thumbs-o-down"></i>65</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        }*@
 
                                     @if (User.Identity.IsAuthenticated)
                                     {

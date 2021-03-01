@@ -39,6 +39,7 @@ namespace GameInspectorWeb.Controllers
         [HttpGet]
         public IActionResult ArticleContent(int id)
         {
+
             ViewBag.GetComments = _db.Comments.Include("Author").ToList();
 
             if (id != 0)

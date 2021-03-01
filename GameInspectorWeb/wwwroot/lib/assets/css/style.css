@@ -3455,7 +3455,9 @@ header.header.header-static {
 .ratting-wrap h3 {
   font-size: 24px;
   line-height: 28px;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  color: #FFFFFF;
+}
 
 .ratting-wrap .rating-area {
   display: -webkit-box;

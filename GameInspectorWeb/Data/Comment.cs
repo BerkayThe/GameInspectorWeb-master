@@ -9,8 +9,8 @@ namespace GameInspectorWeb.Data
 {
     public class Comment
     {
+        [Key]
         public int Id { get; set; }
-
         
         [Display(Name = "Yorum İçeriği")]
         public string CommentContent { get; set; }
@@ -18,8 +18,9 @@ namespace GameInspectorWeb.Data
         [ForeignKey("Author")]
         public string ApplicationUserId { get; set; }
 
+        [ForeignKey("Article")]
         public int ArticleId { get; set; }
-
+        
         public virtual ApplicationUser Author { get; set; }
 
         public virtual Article Article { get; set; }
