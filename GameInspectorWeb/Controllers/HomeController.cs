@@ -51,6 +51,7 @@ namespace GameInspectorWeb.Controllers
                 }
             }
             return NotFound();
+
         }
 
         [HttpPost]

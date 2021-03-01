@@ -38,7 +38,7 @@
         <div class="games-details-area section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-xs-45" style="background:rgba(0,0,0, 0.7)">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-9">
                         <div class="row">
                             <div class="col-12">
                                 <div class="game-image-gallery-wrap">
@@ -46,7 +46,7 @@
                                         @foreach (var item in Model.ContentPhotosPaths.Split(','))
                                         {
                                             <div class="game-image img-full">
-                                                <img src="/img/@item" width="750" height="375" alt="">
+                                                <img src="/img/@item" width="850" height="375" alt="">
                                             </div>
                                         }
                                     </div>
@@ -67,7 +67,7 @@
                                         {
                                             <h1 style="color:#AB966F;">Tam Çözüm</h1>
                                             <!--Single Video Popup Start-->
-                                            <iframe width="560" height="315" src="@Model.VideoPath" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            <iframe width="850" height="450" src="@Model.VideoPath" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                             <!--Single Video Popup End-->
                                         }
 
@@ -177,7 +177,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="review-wrap">
-                                    <h3>Yorumlar(@Model.Comments.Count)</h3>
+                                    <h3 style="color:#FFFFFF">Yorumlar(@Model.Comments.Count)</h3>
                                     <!--Single Review Start-->
 
                                     @foreach (var item in Model.Comments)
@@ -193,7 +193,7 @@
                                             </div>
                                             <p>@item.CommentContent</p>
                                             <div class="review-name-action">
-                                                <a href="#">@item.Author.FirstName @item.Author.LastName</a>
+                                                <a style="color:#FF8000" href="#">@item.Author.FirstName @item.Author.LastName</a>
                                                 <ul>
                                                     <li><a href="#"><i class="fa fa-thumbs-o-up"></i>425</a></li>
                                                     <li><a href="#"><i class="fa fa-thumbs-o-down"></i>65</a></li>
@@ -226,7 +226,7 @@
 
                                     @if (User.Identity.IsAuthenticated)
                                     {
-                                        <h3>Yorum Ekle</h3>
+                                        <h3 style="color:#FFFFFF">Yorum Ekle</h3>
                                         <form method="post" class="comment-form">
 
                                             <div class="row">

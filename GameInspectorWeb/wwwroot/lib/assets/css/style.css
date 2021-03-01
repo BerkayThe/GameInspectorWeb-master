@@ -3476,7 +3476,7 @@ header.header.header-static {
     -webkit-box-flex: 1;
     -ms-flex: 1 0 220px;
     flex: 1 0 220px;
-    background-color: #f4f4f4;
+    background-color: #c0c0c0;
     text-align: center;
     padding: 50px 0; }
     .ratting-wrap .rating-area .total-rating h2 {
@@ -3511,7 +3511,7 @@ header.header.header-static {
           font-size: 18px;
           line-height: 28px;
           font-family: "Qanto";
-          color: #151515; }
+          color: #FFFFFF; }
         .ratting-wrap .rating-area .rating-review .single-rating .rating-star i {
           font-size: 18px;
           line-height: 28px;
@@ -3536,7 +3536,7 @@ header.header.header-static {
         .ratting-wrap .rating-area .rating-review .single-rating .rating-count span {
           font-size: 20px;
           line-height: 28px;
-          color: #151515;
+          color: #FFFFFF;
           font-family: "Qanto"; }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -3555,7 +3555,7 @@ header.header.header-static {
 .review-wrap .single-review h4 {
   font-size: 18px;
   line-height: 28px;
-  color: #151515;
+  color: #A0A0A0;
   margin-bottom: 0; }
 
 .review-wrap .single-review .ratting {

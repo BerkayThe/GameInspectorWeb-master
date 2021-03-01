@@ -1,8 +1,5 @@
 ﻿@model List<Article>
 
-@{
-    var count = Model.Count;
-}
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -661,7 +658,7 @@
 
 
                     </div>
-                    <div class="col-md-3">
+                    <div id="rightBar" class="col-md-3">
                         <div class="mb-2 sticky-top" style="top: 10px">
                             <partial name="_RightPartial" />
                         </div>
@@ -678,15 +675,16 @@
 
         var pageSize = 6;
         var pageIndex = 0;
-
-        $(document).ready(function () {
-            GetData();
-
+        let itemCount = 1
+        $(document).ready(async function () {
+            await GetData();
             $(window).scroll(function () {
                 if ($(window).scrollTop() ==
                     $(document).height() - $(window).height()) {
-                    if (@count !== $(".post-item").length) {
+                    if (itemCount > 0) {
+                        pageIndex++
                         GetData();
+                        window.scrollTo(0, $(window).scrollTop() - 1);
                     }
 
                 }
@@ -694,6 +692,7 @@
         });
 
         function GetData() {
+
             $.ajax({
                 type: 'GET',
                 url: '/Home/GetData',
@@ -706,11 +705,11 @@
                 },
                 success: function (data) {
                     var element = "";
-                    console.log(data)
-                    if (data != null) {
-                        for (var i = 0; i < data.length; i++) {
-                            //var d = new Date();
-                            //var curr_date = d.getDate(data[i].time) + "/" + d.getMonth(data[i].time + "1") + "/" + d.getFullYear(data[i].time);
+                   
+                    itemCount = data.length;
+                    if (data.length > 0) {
+
+                        for (let i = 0; i < data.length; i++) {
 
                             element += `<div class="col-md-6 post-item">
                                                         <!--Single Blog Post Start-->
@@ -734,11 +733,12 @@
 
                         }
 
-                            setTimeout(function () {
-                                $("#scrollPage").append(element)
-                            }, 750)
-                            pageIndex++;
+                        setTimeout(function () {
+                            $("#scrollPage").append(element)
+                        }, 750);
+                        
                     }
+                    console.log(data);
                 },
                 complete: function () {
                     $("#progress").remove()
@@ -747,24 +747,25 @@
                     alert("Error while retrieving data!");
                 }
             });
+            return itemCount
         }
 
-
-
-
-
-
     </script>
-    <script>
-        $(window).scroll(function () {
-            var navbar = document.getElementById("rightBar");
-            if (window.pageYOffset >= 696) {
-                navbar.classList.add("sticky")
-            } else {
-                navbar.classList.remove("sticky");
-            }
-        })
-    </script>
+
+
+
+
+    @*<script>
+            $(window).scroll(function () {
+                var navbar = document.getElementById("rightBar");
+                if (window.pageYOffset >= 696) {
+                    navbar.classList.add("sticky");
+                }
+                else {
+                    navbar.classList.remove("sticky");
+                }
+            })
+        </script>*@
 </body>
 
 
