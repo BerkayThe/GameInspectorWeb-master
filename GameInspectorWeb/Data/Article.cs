@@ -29,10 +29,18 @@ namespace GameInspectorWeb.Data
         public string CharacterContent { get; set; }
 
         public DateTime? Time { get; set; }
+
+        public DateTimeOffset Created { get; set; }
+
+        public DateTimeOffset? LastUpdate { get; set; }
+
+        public DateTimeOffset? Deleted { get; set; }
+
         [NotMapped]
         public IFormFile CoverPhoto { get; set; }
 
         public string CoverPhotoPath { get; set; }
+
 
         //public IFormFileCollection ContentPhotos { get; set; }
         [NotMapped]

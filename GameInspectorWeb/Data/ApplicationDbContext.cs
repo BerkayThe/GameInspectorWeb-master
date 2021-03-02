@@ -28,5 +28,7 @@ namespace GameInspectorWeb.Data
         public DbSet<ArticleCategory> ArticleCategories { get; set; }
 
         public DbSet<UpcomingGames> UpcomingGames { get; set; }
+
+        public DbSet<ArticleHit> ArticleHits { get; set; }
     }
 }

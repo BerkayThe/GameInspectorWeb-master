@@ -8,11 +8,12 @@
     //    actionName = "_ContentLayout";
     //}
 
-    ViewData["Title"] = "Game Inspector";
+    //ViewData["Title"] = "Game Inspector";
+    List<HitViewModel> liste = TempData["MostViewed"] as List<HitViewModel> ?? new List<HitViewModel>();
+    var modelHits = liste.FirstOrDefault(x=>x.Title == Model.Title);
 }
 <!doctype html>
 <html class="no-js" lang="zxx">
-
 
 
 <body>
@@ -33,6 +34,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="text-right">
+            <i><em>@modelHits?.Hits kez okundu</em></i>
         </div>
         <!--Page Banner Area End-->
         <div class="games-details-area section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-xs-45" style="background:rgba(0,0,0, 0.7)">

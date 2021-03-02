@@ -1,14 +1,18 @@
 ﻿using GameInspectorWeb.Data;
 using GameInspectorWeb.Models;
+using GameInspectorWeb.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace GameInspectorWeb.Controllers
@@ -24,8 +28,11 @@ namespace GameInspectorWeb.Controllers
             _db = applicationDbContext;
         }
 
-        public IActionResult Index(int pageIndex = 0, int pageSize = 6)
+        public async Task<IActionResult> Index(int pageIndex = 0, int pageSize = 6)
         {
+
+            TempData["MostViewed"] = await GetHits();
+
             ViewBag.UpcomingGames = _db.UpcomingGames.Take(10).ToList();
 
             ViewBag.Kategori = _db.Categories.Select(x => x.CategoryName).ToList();
@@ -37,9 +44,10 @@ namespace GameInspectorWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult ArticleContent(int id)
+        public async Task<IActionResult> ArticleContent(int id)
         {
-
+            await SendHitRequest(id);
+            TempData["MostViewed"] = await GetHits();
             ViewBag.GetComments = _db.Comments.Include("Author").ToList();
 
             if (id != 0)
@@ -57,6 +65,7 @@ namespace GameInspectorWeb.Controllers
         [HttpPost]
         public IActionResult ArticleContent(Comment comment)
         {
+            
             comment.ApplicationUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             comment.ArticleId = comment.Id;
             comment.Id = 0;
@@ -85,6 +94,55 @@ namespace GameInspectorWeb.Controllers
             var vm = _db.Articles.OrderByDescending(x => x.Time).Skip(pageIndex * pageSize).Take(pageSize).ToList();
 
             return Json(vm.ToList());
+        }
+
+        [NonAction]
+        public async Task SendHitRequest(int id)
+        {
+            var article = _db.Articles.Find(id);
+            if (article != null)
+            {
+                var content = new ArticleHit
+                {
+                    ArticleId = article.Id,
+                    Created = DateTimeOffset.Now,
+                    LastUpdate = DateTimeOffset.Now
+                };
+                var json = JsonConvert.SerializeObject(content);
+                var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var url = "https://localhost:44382/api/ArticleHit/create-async";
+                using var client = new HttpClient();
+
+                var response = await client.PostAsync(url, data);
+            }
+        }
+
+        [NonAction]
+        public async Task<List<HitViewModel>> GetHits()
+        {
+            using HttpClient client = new HttpClient();
+            var response = await client.GetAsync("https://localhost:44382/api/ArticleHit/most-viewed");
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<List<MostViewedArticleView>>(json);
+            List<HitViewModel> liste = new List<HitViewModel>();
+            if (data.Any())
+            {
+                foreach (var item in data)
+                {
+                    liste.Add(_db.Articles.Where(x => x.Id == item.ArticleId).Select(t => new HitViewModel
+                    {
+                        Title = t.Title,
+                        PhotoPath = t.CoverPhotoPath,
+                        Hits = item.Hits + 1
+                    }).FirstOrDefault());
+                }
+                return liste;
+            }
+            else
+            {
+                return new List<HitViewModel>();
+            }
         }
     }
 }

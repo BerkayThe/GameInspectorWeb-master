@@ -1,4 +1,7 @@
-﻿<div class="sidebar-area">
+﻿@{
+    var hits = (TempData["MostViewed"] as List<HitViewModel>).OrderByDescending(x=>x.Hits).ToList();
+}
+<div class="sidebar-area">
     <!--Single Sidebar Widget Start-->
     <div class="single-sidebar-widget row">
         <h3 style="color:#c0c0c0">featured games</h3>
@@ -31,24 +34,23 @@
     <!--Single Sidebar Widget Start-->
     <div class="single-sidebar-widget row">
         <h3 style="color: #C0C0C0;">popular/recomended</h3>
-        <div class="popular-game">
-            <div class="game-img">
-                <a href="#"><img src="~/lib/assets/images/banner/sidebar-banner3.jpg" alt=""></a>
-            </div>
-            <div class="game-content">
-                <h3 style="color: #C0C0C0;"><a href="#">Splinter cell</a></h3>
-                <span style="color: #FFFFFF;">pc/xbox/ps4</span>
-            </div>
-        </div>
-        <div class="popular-game">
-            <div class="game-img">
-                <a href="#"><img src="~/lib/assets/images/banner/sidebar-banner4.jpg" alt=""></a>
-            </div>
-            <div class="game-content">
-                <h3 style="color: #C0C0C0;"><a href="#">battle field 4</a></h3>
-                <span style="color: #FFFFFF;">pc/xbox/ps4</span>
-            </div>
-        </div>
+        @if (hits.Any())
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                var data = hits[i];
+                <div class="popular-game">
+                    <div class="game-img">
+                        <a href="#"><img src="~/img/@hits[i].PhotoPath" alt="@hits[i].Title"></a>
+                    </div>
+                    <div class="game-content">
+                        <h3 style="color: #C0C0C0;"><a href="#">@hits[i].Title</a></h3>
+                        <span style="color: #FFFFFF;">pc/xbox/ps4</span>
+                    </div>
+                </div>
+            }
+        }
+
     </div>
     <!--Single Sidebar Widget End-->
 </div>

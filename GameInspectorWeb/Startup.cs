@@ -1,4 +1,5 @@
 using GameInspectorWeb.Data;
+using GameInspectorWeb.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,8 +38,14 @@ namespace GameInspectorWeb
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+
+            services.AddSingleton<IMostViewedArticleService, MostViewedArticleService>();
+            services.AddHostedService<MostViewedArticleHostedService>();
+
+
             //        services.AddDefaultIdentity<ApplicationUser>()
             //.AddEntityFrameworkStores<ApplicationDbContext>();
+
 
 
             //services.AddRazorPages();
