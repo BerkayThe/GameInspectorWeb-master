@@ -17,9 +17,9 @@ namespace GameInspectorWeb.Controllers
         protected readonly ApplicationDbContext _applicationDbContext;
         protected readonly IMostViewedArticleService _mostViewedArticleService;
 
-        public ArticleHitController([NotNull] ApplicationDbContext hostedServicesDbContext, [NotNull] IMostViewedArticleService mostViewedArticleService)
+        public ArticleHitController([NotNull] ApplicationDbContext applicationDbContext, [NotNull] IMostViewedArticleService mostViewedArticleService)
         {
-            _applicationDbContext = hostedServicesDbContext;
+            _applicationDbContext = applicationDbContext;
             _mostViewedArticleService = mostViewedArticleService;
 
         }
@@ -30,6 +30,7 @@ namespace GameInspectorWeb.Controllers
             await _applicationDbContext.Set<ArticleHit>().AddAsync(entity);
             await _applicationDbContext.SaveChangesAsync();
 
+            _mostViewedArticleService.MostViewedArticles = MostViewedArticleHostedService.GetMostViewedArticles(_applicationDbContext);
             return Ok(entity);
         }
 

@@ -1,5 +1,4 @@
-﻿@model List<Article>
-
+﻿@model List<ArticleCategoryViewModel> 
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -36,7 +35,7 @@
                 <div class="row no-gutters">
                     <div class="col-lg-3">
                         <div class="upcoming-game-area">
-                            <h2>upcoming <br> games</h2>
+                            <h1>Çıkacak <br> Oyunlar</h1>
                         </div>
                     </div>
                     <div class="col-lg-9">
@@ -73,14 +72,15 @@
                             <div class="col-12">
                                 <!--Section Title Start-->
                                 <div class="section-title">
-                                    <h2>latest <span class="color-blue">post</span></h2>
+                                    <h2 style="color:#00cc66">latest post</h2>
                                     <ul class="nav categorie-tab-menu">
-                                        <li><a class="active" data-toggle="tab" href="#all">all</a></li>
-                                        <li><a data-toggle="tab" href="#football">football</a></li>
-                                        <li><a data-toggle="tab" href="#adventure">adventure</a></li>
-                                        <li><a data-toggle="tab" href="#racing">racing</a></li>
-                                        <li><a data-toggle="tab" href="#fighting">fighting</a></li>
-                                        <li><a data-toggle="tab" href="#pazzle">pazzle</a></li>
+                                        <li><a class="active" onclick="setCatId(0)" data-toggle="tab" href="#all">all</a></li>
+
+                                        @foreach (var item in ViewBag.CategoryList)
+                                        {
+                                            <li><a data-toggle="tab" onclick="setCatId(@item.Id)" href="@item.Id">@item.CategoryName</a></li>
+                                        }
+
                                     </ul>
                                 </div>
                                 <!--Section Title End-->
@@ -93,565 +93,8 @@
                                         <!--Javascript code below-->
                                     </div>
                                 </div>
-                                <div id="football" class="tab-pane fade">
-                                    <div class="row row-7">
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-1.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">hidden secret of the elder scroll</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Smith</a></li>
-                                                        <li>15 Devember, 2018 </li>
-                                                        <li><a href="#">25 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-4.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">spyro have some new tricks for experts</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Jack</a></li>
-                                                        <li>15 Devember, 2018 </li>
-                                                        <li><a href="#">112 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-5.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">carabians pairets war</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Michel</a></li>
-                                                        <li>05 Devember, 2018 </li>
-                                                        <li><a href="#">209 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-6.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">four new stages unlok for diablo</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Stephen</a></li>
-                                                        <li>02 Devember, 2018 </li>
-                                                        <li><a href="#">32 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-2.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">new version of the game released very soon</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Richard</a></li>
-                                                        <li>13 Devember, 2018 </li>
-                                                        <li><a href="#">15 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-3.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">new action, new move, fast control</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Kaissha</a></li>
-                                                        <li>10 Devember, 2018 </li>
-                                                        <li><a href="#">49 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="adventure" class="tab-pane fade">
-                                    <div class="row row-7">
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-1.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">hidden secret of the elder scroll</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Smith</a></li>
-                                                        <li>15 Devember, 2018 </li>
-                                                        <li><a href="#">25 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-2.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">new version of the game released very soon</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Richard</a></li>
-                                                        <li>13 Devember, 2018 </li>
-                                                        <li><a href="#">15 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-5.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">carabians pairets war</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Michel</a></li>
-                                                        <li>05 Devember, 2018 </li>
-                                                        <li><a href="#">209 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-6.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">four new stages unlok for diablo</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Stephen</a></li>
-                                                        <li>02 Devember, 2018 </li>
-                                                        <li><a href="#">32 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-3.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">new action, new move, fast control</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Kaissha</a></li>
-                                                        <li>10 Devember, 2018 </li>
-                                                        <li><a href="#">49 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-4.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">spyro have some new tricks for experts</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Jack</a></li>
-                                                        <li>15 Devember, 2018 </li>
-                                                        <li><a href="#">112 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="racing" class="tab-pane fade">
-                                    <div class="row row-7">
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-1.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">hidden secret of the elder scroll</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Smith</a></li>
-                                                        <li>15 Devember, 2018 </li>
-                                                        <li><a href="#">25 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-2.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">new version of the game released very soon</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Richard</a></li>
-                                                        <li>13 Devember, 2018 </li>
-                                                        <li><a href="#">15 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-6.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">four new stages unlok for diablo</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Stephen</a></li>
-                                                        <li>02 Devember, 2018 </li>
-                                                        <li><a href="#">32 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-3.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">new action, new move, fast control</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Kaissha</a></li>
-                                                        <li>10 Devember, 2018 </li>
-                                                        <li><a href="#">49 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-4.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">spyro have some new tricks for experts</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Jack</a></li>
-                                                        <li>15 Devember, 2018 </li>
-                                                        <li><a href="#">112 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-5.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">carabians pairets war</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Michel</a></li>
-                                                        <li>05 Devember, 2018 </li>
-                                                        <li><a href="#">209 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="fighting" class="tab-pane fade">
-                                    <div class="row row-7">
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-1.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">hidden secret of the elder scroll</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Smith</a></li>
-                                                        <li>15 Devember, 2018 </li>
-                                                        <li><a href="#">25 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-2.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">new version of the game released very soon</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Richard</a></li>
-                                                        <li>13 Devember, 2018 </li>
-                                                        <li><a href="#">15 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-3.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">new action, new move, fast control</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Kaissha</a></li>
-                                                        <li>10 Devember, 2018 </li>
-                                                        <li><a href="#">49 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-4.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">spyro have some new tricks for experts</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Jack</a></li>
-                                                        <li>15 Devember, 2018 </li>
-                                                        <li><a href="#">112 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-5.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">carabians pairets war</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Michel</a></li>
-                                                        <li>05 Devember, 2018 </li>
-                                                        <li><a href="#">209 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-6.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">four new stages unlok for diablo</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Stephen</a></li>
-                                                        <li>02 Devember, 2018 </li>
-                                                        <li><a href="#">32 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="pazzle" class="tab-pane fade">
-                                    <div class="row row-7">
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-1.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">hidden secret of the elder scroll</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Smith</a></li>
-                                                        <li>15 Devember, 2018 </li>
-                                                        <li><a href="#">25 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-2.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">new version of the game released very soon</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Richard</a></li>
-                                                        <li>13 Devember, 2018 </li>
-                                                        <li><a href="#">15 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-3.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">new action, new move, fast control</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Kaissha</a></li>
-                                                        <li>10 Devember, 2018 </li>
-                                                        <li><a href="#">49 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-5.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">carabians pairets war</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Michel</a></li>
-                                                        <li>05 Devember, 2018 </li>
-                                                        <li><a href="#">209 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-6.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">four new stages unlok for diablo</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Stephen</a></li>
-                                                        <li>02 Devember, 2018 </li>
-                                                        <li><a href="#">32 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--Single Blog Post Start-->
-                                            <div class="single-blog-post mb-30">
-                                                <div class="blog-img">
-                                                    <a href="single-blog.html"><img src="~/lib/assets/images/blog/blog-4.jpg" alt=""></a>
-                                                </div>
-                                                <div class="blog-content">
-                                                    <h3><a href="single-blog.html">spyro have some new tricks for experts</a></h3>
-                                                    <p>Some of hiden secret of the  Elder Scroll is the most popular are ames that your can Latest Mega 2019 games offer you ioous league and also alow you to make smile and enjoy the game maek it easy</p>
-                                                    <ul class="meta">
-                                                        <li><a href="#">Jack</a></li>
-                                                        <li>15 Devember, 2018 </li>
-                                                        <li><a href="#">112 Comments</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--Single Blog Post End-->
-                                        </div>
-                                    </div>
+                                <div id="load-spinner">
+
                                 </div>
                             </div>
                         </div>
@@ -673,9 +116,8 @@
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript">
 
-        var pageSize = 6;
-        var pageIndex = 0;
-        let itemCount = 1
+       
+        
         $(document).ready(async function () {
             await GetData();
             $(window).scroll(function () {
@@ -689,6 +131,8 @@
 
                 }
             });
+
+            
         });
 
         function GetData() {
@@ -696,47 +140,47 @@
             $.ajax({
                 type: 'GET',
                 url: '/Home/GetData',
-                data: { "pageindex": pageIndex, "pagesize": pageSize },
+                data: { "pageindex": pageIndex, "pagesize": pageSize, catId: catId  },
                 dataType: 'json',
                 beforeSend: function () {
-                    $("#main-wrapper").append(`<div class="spinner-border d-flex mx-auto" id="progress" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>`);
+                    $("#load-spinner").append(`<div class="spinner-border d-flex mx-auto" id="progress" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>`);
                 },
                 success: function (data) {
                     var element = "";
-                   
+
                     itemCount = data.length;
                     if (data.length > 0) {
 
                         for (let i = 0; i < data.length; i++) {
-
+                            
                             element += `<div class="col-md-6 post-item">
-                                                        <!--Single Blog Post Start-->
-                                                        <div class="single-blog-post mb-30">
-                                                            <div class="blog-img">
-                                                                <a href="Home/ArticleContent/${data[i].id}"><img src="/img/${data[i].coverPhotoPath}" width="555" height="313" alt=""></a>
-                                                            </div>
-                                                            <div class="blog-content">
-                                                                <h3><a href="single-blog.html" style="color:#CC0066;">${data[i].title}</a></h3>
-                                                                <p class="boranAga" style="">${data[i].content}</p>
-                                                                <ul class="meta">
-                                                                    <li><a href="#">Admin</a></li>
+                                                                        <!--Single Blog Post Start-->
+                                                                        <div class="single-blog-post mb-30">
+                                                                            <div class="blog-img">
+                                                                                <a href="Home/ArticleContent/${data[i].articleId}"><img src="/img/${data[i].coverPhotoPath}" width="555" height="313" alt=""></a>
+                                                                            </div>
+                                                                            <div class="blog-content">
+                                                                                <h3><a " style="color:#CC0066;">${data[i].articleTitle}</a></h3>
+                                                                                <p class="boranAga" style="">${data[i].articleContent}</p>
+                                                                                <ul class="meta">
+                                                                                    <li><a href="#">Admin</a></li>
 
-                                                                        <li>${new Date(data[i].time).toLocaleDateString()}</li>
-                                                                    <li><a href="#">25 Comments</a></li>
-                                                                </ul>
-                                                                </div>
-                                                            </div>
-                                                            <!--Single Blog Post End-->
-                                                        </div>`;
+                                                                                        <li>${new Date(data[i].time).toLocaleDateString()}</li>
+                                                                                    <li><a href="#">25 Comments</a></li>
+                                                                                </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--Single Blog Post End-->
+                                                                        </div>`;
 
                         }
 
                         setTimeout(function () {
                             $("#scrollPage").append(element)
                         }, 750);
-                        
+
                     }
                     console.log(data);
                 },
@@ -750,6 +194,8 @@
             return itemCount
         }
 
+       
+        
     </script>
 
 

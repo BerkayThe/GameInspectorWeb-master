@@ -29,23 +29,28 @@ namespace GameInspectorWeb.Services
                 {
                     var hostedServicesDbContext = (ApplicationDbContext)scope.ServiceProvider.GetRequiredService(typeof(ApplicationDbContext));
                     //var timeFrom = DateTimeOffset.Now.AddSeconds(-60);
-
-                    _mostViewedArticleService.MostViewedArticles = hostedServicesDbContext.Set<ArticleHit>()
-                        .Join(
-                            hostedServicesDbContext.Set<Article>(),
-                            articleHit => articleHit.ArticleId,
-                            article => article.Id,
-                            (articleHit, article) => new { ArticleHit = articleHit, Article = article }
-                        )
-                        //.Where(g => g.ArticleHit.Created >= timeFrom)
-                        .GroupBy(g => g.Article.Id)
-                        .Select(g => new MostViewedArticleView { ArticleId = g.Key, Title = g.Min(t => t.Article.Title), Hits = g.Count() })
-                        .OrderByDescending(g => g.Hits)
-                        .ToList();
+                    _mostViewedArticleService.MostViewedArticles = GetMostViewedArticles(hostedServicesDbContext);
                 }
 
                 await Task.Delay(new TimeSpan(0, 0, 1));
             }
+        }
+
+        public static List<MostViewedArticleView> GetMostViewedArticles(ApplicationDbContext hostedServicesDbContext)
+        {
+            var mostViewedArticles = hostedServicesDbContext.Set<ArticleHit>()
+                                    .Join(
+                                        hostedServicesDbContext.Set<Article>(),
+                                        articleHit => articleHit.ArticleId,
+                                        article => article.Id,
+                                        (articleHit, article) => new { ArticleHit = articleHit, Article = article }
+                                    )
+                                    //.Where(g => g.ArticleHit.Created >= timeFrom)
+                                    .GroupBy(g => g.Article.Id)
+                                    .Select(g => new MostViewedArticleView { ArticleId = g.Key, Title = g.Min(t => t.Article.Title), Hits = g.Count() })
+                                    .OrderByDescending(g => g.Hits)
+                                    .ToList();
+            return mostViewedArticles;
         }
     }
 }

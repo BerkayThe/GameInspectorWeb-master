@@ -69,7 +69,7 @@
 
                                         @if (!string.IsNullOrEmpty(Model.VideoPath))
                                         {
-                                            <h1 style="color:#AB966F;">Tam Çözüm</h1>
+                                            <h1 style="color:#AB966F;">Tam Çözüm/TANİTİM</h1>
                                             <!--Single Video Popup Start-->
                                             <iframe width="850" height="450" src="@Model.VideoPath" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                             <!--Single Video Popup End-->
@@ -186,7 +186,7 @@
 
                                     @foreach (var item in Model.Comments)
                                     {
-                                        <div class="single-review mb-30">
+                                        <div class="single-review mb-30" style="background: rgba(96,96,96, 0.7)">
                                             <h4>Best action game play ever</h4>
                                             <div class="ratting">
                                                 <i class="fa fa-star"></i>
@@ -239,7 +239,7 @@
                                                 </div>
 
                                                 <div class="col-12">
-                                                    <input type="submit" asp-action="ArticleContent" asp-controller="Home" value="send now">
+                                                    <input type="submit" asp-action="ArticleContent" asp-controller="Home" value="Gönder">
                                                 </div>
 
                                             </div>

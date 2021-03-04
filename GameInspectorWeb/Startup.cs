@@ -41,7 +41,7 @@ namespace GameInspectorWeb
 
             services.AddSingleton<IMostViewedArticleService, MostViewedArticleService>();
             services.AddHostedService<MostViewedArticleHostedService>();
-
+            services.AddSession();
 
             //        services.AddDefaultIdentity<ApplicationUser>()
             //.AddEntityFrameworkStores<ApplicationDbContext>();
@@ -71,6 +71,7 @@ namespace GameInspectorWeb
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthentication();
             app.UseAuthorization();

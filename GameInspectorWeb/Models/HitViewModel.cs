@@ -7,6 +7,7 @@ namespace GameInspectorWeb.Models
 {
     public class HitViewModel
     {
+        public int ArticleId { get; set; }
         public string Title { get; set; }
 
         public string PhotoPath { get; set; }

@@ -21,6 +21,19 @@
 
     <!-- Modernizr JS -->
     <script src="~/lib/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script>
+        var pageSize = 6;
+        var pageIndex = 0;
+        let itemCount = 1
+        let catId = 0;
+        var setCatId = async function(id) {
+            catId = id;
+            pageIndex = 0;
+            itemCount = 1;
+            $("#scrollPage").html("")
+            await GetData()
+        }
+    </script>
 
 
 </head>
@@ -39,7 +52,7 @@
                     <!--Logo start-->
                     <div class="col-12 col-md-3 col-lg-3 order-md-1 order-lg-1 mt-20 mb-20">
                         <div class="logo">
-                            <a href="index.html"><img src="~/lib/assets/images/logo.png" alt=""></a>
+                            <a asp-controller="Home" asp-action="Index"><h2 style="color:#FFFFFF">ⒼⒶⓂⒺ ⒾⓃⓈⓅⒺⒸⓉⓄⓇ</h2></a>
                         </div>
                     </div>
                     <!--Logo end-->
@@ -48,50 +61,12 @@
                         <nav class="main-menu menu-style-2">
                             <ul>
                                 <li>
-                                    <a asp-controller="Home" asp-action="Index">Home</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index-1.html">Home One</a></li>
-                                        <li><a href="index-2.html">Home Two</a></li>
-                                        <li><a href="index-3.html">Home Three</a></li>
-                                        <li><a href="index-4.html">Home Four</a></li>
-                                        <li><a href="index-5.html">Home Five</a></li>
-                                        <li><a href="index-6.html">Home Six</a></li>
-                                        <li><a href="index-landing.html">Home Landing</a></li>
-                                    </ul>
+                                    <a asp-controller="Home" asp-action="Index">Anasayfa</a>
                                 </li>
                                 <li>
-                                    <a href="games.html">games</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="games.html">Games</a></li>
-                                        <li><a href="games-details.html">Games Details</a></li>
-                                    </ul>
+                                    <a href="forum.html">Forum</a>
                                 </li>
-                                <li><a href="video.html">Videos</a></li>
-                                <li>
-                                    <a href="forum.html">Forums</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="forum.html">Forums</a></li>
-                                        <li><a href="forum-create.html">Forums Create</a></li>
-                                        <li><a href="forum-post.html">Forums Post</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Pages</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                        <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                        <li><a href="blog-list.html">Blog List</a></li>
-                                        <li><a href="blog-list-left-sidebar.html">Blog List Left Sidebar</a></li>
-                                        <li><a href="single-blog.html">Single Blog</a></li>
-                                        <li><a href="single-blog-left.html">Single Blog Left Sidebar</a></li>
-                                        <li><a href="gallery.html">Gallery</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a>Login</a></li>
-                                        <li><a href="register.html">REGISTER</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="contact.html">Hakkımızda</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -100,8 +75,8 @@
                     <div class="col-12 col-md-9 order-md-2 order-lg-3 col-lg-3">
                         <div class="header-right-wrap">
                             <ul>
-                                <li><a asp-area="Identity" asp-page="/Account/Login">LOGIN</a></li>
-                                <li><a asp-area="Identity" asp-page="/Account/Register">REGISTER</a></li>
+                                <li><a asp-area="Identity" asp-page="/Account/Login">GİRİŞ YAP</a></li>
+                                <li><a asp-area="Identity" asp-page="/Account/Register">KAYIT OL</a></li>
                                 @if (User.IsInRole("admin"))
                                 {
                                     <li><a asp-area="Admin" asp-controller="Events" asp-action="Index">ADMIN</a></li>
