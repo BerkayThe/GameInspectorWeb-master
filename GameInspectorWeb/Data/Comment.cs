@@ -11,7 +11,10 @@ namespace GameInspectorWeb.Data
     {
         [Key]
         public int Id { get; set; }
-        
+
+        [Display(Name = "Yorum Başlığı")]
+        public string CommentTitle { get; set; }
+
         [Display(Name = "Yorum İçeriği")]
         public string CommentContent { get; set; }
 

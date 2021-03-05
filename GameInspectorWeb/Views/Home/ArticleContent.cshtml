@@ -187,20 +187,13 @@
                                     @foreach (var item in Model.Comments)
                                     {
                                         <div class="single-review mb-30" style="background: rgba(96,96,96, 0.7)">
-                                            <h4>Best action game play ever</h4>
-                                            <div class="ratting">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                            </div>
+                                            <h4>@item.CommentTitle</h4>
+
                                             <p>@item.CommentContent</p>
                                             <div class="review-name-action">
-                                                <a style="color:#FF8000" href="#">@item.Author.FirstName @item.Author.LastName</a>
+                                                
                                                 <ul>
-                                                    <li><a href="#"><i class="fa fa-thumbs-o-up"></i>425</a></li>
-                                                    <li><a href="#"><i class="fa fa-thumbs-o-down"></i>65</a></li>
+                                                    <li><a style="color:#FF8000" href="#">@item.Author.FirstName @item.Author.LastName</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -234,8 +227,11 @@
                                         <form method="post" class="comment-form">
 
                                             <div class="row">
+                                                <div class="col-4 mb-10">
+                                                    <input type="text" name="CommentTitle" id="CommentTitle" placeholder="Yorum Başlığı" />
+                                                </div>
                                                 <div class="col-12 mb-30">
-                                                    <textarea name="CommentContent" id="CommentContent" placeholder="Buraya Yaz Uleeeeee"></textarea>
+                                                    <textarea name="CommentContent" id="CommentContent" placeholder="Yorum İçeriği"></textarea>
                                                 </div>
 
                                                 <div class="col-12">

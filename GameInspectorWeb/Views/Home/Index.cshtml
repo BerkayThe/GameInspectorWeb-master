@@ -1,4 +1,4 @@
-﻿@model List<ArticleCategoryViewModel> 
+﻿@model List<ArticleCategoryViewModel>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -116,8 +116,8 @@
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript">
 
-       
-        
+
+
         $(document).ready(async function () {
             await GetData();
             $(window).scroll(function () {
@@ -132,7 +132,7 @@
                 }
             });
 
-            
+
         });
 
         function GetData() {
@@ -140,12 +140,12 @@
             $.ajax({
                 type: 'GET',
                 url: '/Home/GetData',
-                data: { "pageindex": pageIndex, "pagesize": pageSize, catId: catId  },
+                data: { "pageindex": pageIndex, "pagesize": pageSize, catId: catId },
                 dataType: 'json',
-                beforeSend: function () {
+                beforeSend: function loading() {
                     $("#load-spinner").append(`<div class="spinner-border d-flex mx-auto" id="progress" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>`);
+                                    <span class="sr-only">Loading...</span>
+                                </div>`);
                 },
                 success: function (data) {
                     var element = "";
@@ -154,26 +154,26 @@
                     if (data.length > 0) {
 
                         for (let i = 0; i < data.length; i++) {
-                            
-                            element += `<div class="col-md-6 post-item">
-                                                                        <!--Single Blog Post Start-->
-                                                                        <div class="single-blog-post mb-30">
-                                                                            <div class="blog-img">
-                                                                                <a href="Home/ArticleContent/${data[i].articleId}"><img src="/img/${data[i].coverPhotoPath}" width="555" height="313" alt=""></a>
-                                                                            </div>
-                                                                            <div class="blog-content">
-                                                                                <h3><a " style="color:#CC0066;">${data[i].articleTitle}</a></h3>
-                                                                                <p class="boranAga" style="">${data[i].articleContent}</p>
-                                                                                <ul class="meta">
-                                                                                    <li><a href="#">Admin</a></li>
 
-                                                                                        <li>${new Date(data[i].time).toLocaleDateString()}</li>
-                                                                                    <li><a href="#">25 Comments</a></li>
-                                                                                </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                            <!--Single Blog Post End-->
-                                                                        </div>`;
+                            element += `<div class="col-md-6 post-item">
+                                                                                <!--Single Blog Post Start-->
+                                                                                <div class="single-blog-post mb-30">
+                                                                                    <div class="blog-img">
+                                                                                        <a href="Home/ArticleContent/${data[i].articleId}"><img src="/img/${data[i].coverPhotoPath}" width="555" height="313" alt=""></a>
+                                                                                    </div>
+                                                                                    <div class="blog-content">
+                                                                                        <h3><a " style="color:#CC0066;">${data[i].articleTitle}</a></h3>
+                                                                                        <p class="boranAga" style="">${data[i].articleContent}</p>
+                                                                                        <ul class="meta">
+                                                                                            <li><a href="#">Admin</a></li>
+
+                                                                                                <li>${new Date(data[i].time).toLocaleDateString()}</li>
+                                                                                            <li><a href="#">25 Comments</a></li>
+                                                                                        </ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!--Single Blog Post End-->
+                                                                                </div>`;
 
                         }
 
@@ -194,8 +194,8 @@
             return itemCount
         }
 
-       
-        
+
+
     </script>
 
 

@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    LoginViewModel Model = new LoginViewModel();
+    Model.ReturnUrl = Context.Request.Path.Value;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -18,7 +22,6 @@
     <link rel="stylesheet" href="~/lib/assets/css/plugins.css">
     <link rel="stylesheet" href="~/lib/assets/css/helper.css">
     <link rel="stylesheet" href="~/lib/assets/css/style.css">
-
     <!-- Modernizr JS -->
     <script src="~/lib/assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script>
@@ -26,7 +29,7 @@
         var pageIndex = 0;
         let itemCount = 1
         let catId = 0;
-        var setCatId = async function(id) {
+        var setCatId = async function (id) {
             catId = id;
             pageIndex = 0;
             itemCount = 1;
@@ -75,8 +78,47 @@
                     <div class="col-12 col-md-9 order-md-2 order-lg-3 col-lg-3">
                         <div class="header-right-wrap">
                             <ul>
-                                <li><a asp-area="Identity" asp-page="/Account/Login">GİRİŞ YAP</a></li>
-                                <li><a asp-area="Identity" asp-page="/Account/Register">KAYIT OL</a></li>
+
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a asp-area="Identity" asp-page="/Account/Logout" data-toggle="modal" data-target="#exampleModal">ÇIKIŞ YAP</a>
+                                    </li>
+
+                                }
+                                else
+                                {
+                                    <li><a asp-area="Identity" asp-page="/Account/Register">KAYIT OL</a></li>
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GİRİŞ YAP</a>
+                                        <div class="dropdown-menu p-3 bg-dark text-white" style="width: 300%; border-radius:10px;">
+                                            <form class="form-horizontal" method="post" asp-area="Identity" asp-page="/Account/Login" accept-charset="UTF-8">
+                                                <div asp-validation-summary="All" class="text-danger"></div>
+                                                <div class="form-group">
+                                                    <label asp-for="@Model.Email"></label>
+                                                    <input asp-for="@Model.Email" class="form-control" />
+                                                    <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label asp-for="@Model.Password"></label>
+                                                    <input asp-for="@Model.Password" class="form-control" />
+                                                    <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="checkbox">
+                                                        <label style="font-family: Arial; " asp-for="@Model.RememberMe">
+                                                            <input asp-for="@Model.RememberMe" />
+                                                            Beni Hatırla
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <a id="forgot-password" style="font-size:small; padding:0; display: inline-block" asp-area="Identity" asp-page="/Account/ForgotPassword">Forgot your password?</a>
+                                                <button type="submit" class="btn btn-primary float-right">Giriş</button>
+                                            </form>
+                                        </div>
+                                    </li>
+                                }
+
                                 @if (User.IsInRole("admin"))
                                 {
                                     <li><a asp-area="Admin" asp-controller="Events" asp-action="Index">ADMIN</a></li>
@@ -91,22 +133,22 @@
                                     </div>
                                 </li>
                             </ul>
+
+                        </div>
+                        <!--Header Right Wrap-->
+
+                    </div>
+
+                    <!--Mobile Menu start-->
+                    <div class="row">
+                        <div class="col-12 d-flex d-lg-none">
+                            <div class="mobile-menu"></div>
                         </div>
                     </div>
-                    <!--Header Right Wrap-->
+                    <!--Mobile Menu end-->
 
                 </div>
-
-                <!--Mobile Menu start-->
-                <div class="row">
-                    <div class="col-12 d-flex d-lg-none">
-                        <div class="mobile-menu"></div>
-                    </div>
-                </div>
-                <!--Mobile Menu end-->
-
             </div>
-        </div>
     </header>
     <!--Header section end-->
     <div class="container">
@@ -115,14 +157,42 @@
         </main>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="row">
+                            <div class="col-8 text-left">
+                                <p class="text-black-50">Güvenli çıkış yapmak için tıklayınız.</p>
+                            </div>
+                            <div class="col-4">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                                    <button type="submit" class="btn btn-primary">Güvenli Çıkış</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    }
+                    else
+                    {<p>Modal body text goes here.</p>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--Footer section start-->
-    <footer class="footer-section style-2 section bg-theme" style="background-image: url(/lib/assets/images/bg/footer-bg.jpg)">
+    <footer class="footer-section style-2 section bg-theme" style="background-image: url(/lib/assets/images/bg/footer-bg.jpg); ">
 
         <!--Footer Top start-->
         <div class="footer-top section pt-175 pt-lg-150 pt-md-125 pt-sm-110 pt-xs-40 pb-80 pb-lg-70 pb-md-60 pb-sm-15 pb-xs-40">
             <div class="container container-1520">
                 <div class="row justify-content-lg-between">
-
+                    
                     <!--Footer Widget start-->
                     <div class="col-xl-3 col-lg-2 col-md-3">
                         <div class="footer-widget">
@@ -182,10 +252,16 @@
         </div>
         <!--Footer bottom end-->
 
+
+
     </footer>
     <!--Footer section end-->
-
     <script src="~/lib/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            $("#navbarDropdownMenuLink").trigger("click")
+        })
+    </script>
     <script src="~/lib/assets/js/popper.min.js"></script>
     <script src="~/lib/assets/js/bootstrap.min.js"></script>
     <script src="~/lib/assets/js/plugins.js"></script>

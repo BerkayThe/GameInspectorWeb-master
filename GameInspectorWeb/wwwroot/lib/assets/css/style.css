@@ -59,7 +59,8 @@ body {
     text-align: right; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Qanto";
+  font-family: Arial;
+  text-transform: uppercase;
   color: #252525;
   font-weight: 400;
   margin-top: 0;
