@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     LoginViewModel Model = new LoginViewModel();
     Model.ReturnUrl = Context.Request.Path.Value;
 }
@@ -14,6 +14,7 @@
     <link href="~/lib/assets/images/favicon.ico" type="img/x-icon" rel="shortcut icon">
     <!-- All css files are included here. -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="~/lib/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/lib/assets/css/qanto.css">
     <link rel="stylesheet" href="~/lib/assets/css/bauhaus93.css">
@@ -24,6 +25,7 @@
     <link rel="stylesheet" href="~/lib/assets/css/style.css">
     <!-- Modernizr JS -->
     <script src="~/lib/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
     <script>
         var pageSize = 6;
         var pageIndex = 0;
@@ -123,13 +125,17 @@
                                 {
                                     <li><a asp-area="Admin" asp-controller="Events" asp-action="Index">ADMIN</a></li>
                                 }
-                                <li class="header-search">
+                                <li>
                                     <a class="header-search-toggle" href="#"><i class="icofont-search-2"></i></a>
                                     <div class="header-search-form">
-                                        <form action="#">
-                                            <input type="text" placeholder="Type and hit enter">
+                                        <form>
+                                            <input type="text" id="article" placeholder="type and hit enter">
+                                            <div id="searchResults">
+
+                                            </div>
                                             <button><i class="icofont-search"></i></button>
                                         </form>
+
                                     </div>
                                 </li>
                             </ul>
@@ -169,7 +175,7 @@
                                 <p class="text-black-50">Güvenli çıkış yapmak için tıklayınız.</p>
                             </div>
                             <div class="col-4">
-                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index","Home")" method="post">
                                     <button type="submit" class="btn btn-primary">Güvenli Çıkış</button>
                                 </form>
                             </div>
@@ -192,7 +198,7 @@
         <div class="footer-top section pt-175 pt-lg-150 pt-md-125 pt-sm-110 pt-xs-40 pb-80 pb-lg-70 pb-md-60 pb-sm-15 pb-xs-40">
             <div class="container container-1520">
                 <div class="row justify-content-lg-between">
-                    
+
                     <!--Footer Widget start-->
                     <div class="col-xl-3 col-lg-2 col-md-3">
                         <div class="footer-widget">
@@ -257,10 +263,55 @@
     </footer>
     <!--Footer section end-->
     <script src="~/lib/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script>
         $(function () {
             $("#navbarDropdownMenuLink").trigger("click")
         })
+       
+    </script>
+
+    <script>
+        var element = ""
+        $(document).ready(function () {
+            $("#article").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/api/articlesearch/search',
+                        data: { "term": request.term },
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data)
+                            if (document.getElementById("article").value != "") {
+                                var storage = $.map(data, function (item) {
+                                    element += `<li class="ui-menu-item" ><div class="ui-menu-item-wrapper"><a style=" display: -webkit-box; overflow:hidden; align-items: center;padding: 0px; font-family: 'Arial'" href="/Home/ArticleContent/${item.id}"><img src="/img/${item.coverPhotoPath}" style="margin-right: 5px; float:left;" height="48" width="48"/>${item.title}</a></div></li>`
+                                    return item
+                                })
+                                element = `<ul id="searchList" class="ui-menu ui-autocomplete" style="top: 55px;width:-webkit-fill-available;background-color: rgb(37 37 37);line-height: 0px;padding: 0;margin: 0;display: grid;">${element}</ul>`;
+                                $("#searchResults").html("");
+                                $("#searchResults").append(element)
+                                element = "";
+                                console.log(element)
+                            } 
+                        },
+                        error: function (xhr, textStatus, error) {
+                            alert(xhr.statusText);
+                        },
+                        failure: function (response) {
+                            alert("failure " + response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+
+                    var path = window.location.origin + "/Home/ArticleContent/" + i.item.value;
+                    window.location.replace(path);
+                    //window.location.href = "Home/ArticleContent/39";
+                },
+                minLength: 1
+            })
+        });
+
     </script>
     <script src="~/lib/assets/js/popper.min.js"></script>
     <script src="~/lib/assets/js/bootstrap.min.js"></script>

@@ -52,6 +52,8 @@ namespace GameInspectorWeb.Controllers
             //        CategoryName = cat.CategoryName
             //    }).Distinct().ToList();
 
+
+
             TempData["MostViewed"] = await GetHits();
 
             ViewBag.UpcomingGames = _db.UpcomingGames.Take(10).ToList();
