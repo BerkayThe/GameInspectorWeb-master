@@ -69,7 +69,7 @@
 
                                         @if (!string.IsNullOrEmpty(Model.VideoPath))
                                         {
-                                            <h1 style="color:#AB966F;">Tam Çözüm/TANİTİM</h1>
+                                            <h1 style="color:#AB966F;">Tam Çözüm/TANITIM</h1>
                                             <!--Single Video Popup Start-->
                                             <iframe width="850" height="450" src="@Model.VideoPath" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                             <!--Single Video Popup End-->
@@ -181,45 +181,6 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="review-wrap">
-                                    <h3 style="color:#FFFFFF">Yorumlar(@Model.Comments.Count)</h3>
-                                    <!--Single Review Start-->
-
-                                    @foreach (var item in Model.Comments)
-                                    {
-                                        <div class="single-review mb-30" style="background: rgba(96,96,96, 0.7)">
-                                            <h4>@item.CommentTitle</h4>
-
-                                            <p>@item.CommentContent</p>
-                                            <div class="review-name-action">
-                                                
-                                                <ul>
-                                                    <li><a style="color:#FF8000" href="#">@item.Author.FirstName @item.Author.LastName</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    }
-
-                                    @*@foreach (var item in ViewBag.GetComments)
-                                        {
-                                            <div class="single-review mb-30">
-                                                <h4>Best action game play ever</h4>
-                                                <div class="ratting">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-half-o"></i>
-                                                </div>
-                                                <p>@item.CommentContent</p>
-                                                <div class="review-name-action">
-                                                    <a href="#">@item.Author.FirstName @item.Author.LastName</a>
-                                                    <ul>
-                                                        <li><a href="#"><i class="fa fa-thumbs-o-up"></i>425</a></li>
-                                                        <li><a href="#"><i class="fa fa-thumbs-o-down"></i>65</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        }*@
 
                                     @if (User.Identity.IsAuthenticated)
                                     {
@@ -228,13 +189,13 @@
 
                                             <div class="row">
                                                 <div class="col-4 mb-10">
-                                                    <input type="text" name="CommentTitle" id="CommentTitle" placeholder="Yorum Başlığı" />
+                                                    <input type="text" name="CommentTitle" id="CommentTitle" style="background: rgb(196, 218, 230); border-radius: 5px; border-bottom: 4px solid blue;" placeholder="Yorum Başlığı" />
                                                 </div>
-                                                <div class="col-12 mb-30">
-                                                    <textarea name="CommentContent" id="CommentContent" placeholder="Yorum İçeriği"></textarea>
+                                                <div class="col-12 mb-20">
+                                                    <textarea name="CommentContent" id="CommentContent" style="border-radius: 5px; background: rgb(196, 218, 230);" placeholder="Yorum İçeriği"></textarea>
                                                 </div>
 
-                                                <div class="col-12">
+                                                <div class="col-12" style="margin-bottom:3%;">
                                                     <input type="submit" asp-action="ArticleContent" asp-controller="Home" value="Gönder">
                                                 </div>
 
@@ -245,10 +206,51 @@
                                     {
                                         <a asp-area="Identity" asp-route-returnUrl="@Context.Request.Path.Value" asp-page="/Account/Login">Yorum yapmak için giriş yapmalısınız.</a>
                                     }
+
+
+                                    <!--Single Review Start-->
+                                    <h3 style="color:#FFFFFF">Yorumlar(@Model.Comments.Count)</h3>
+
+                                    @foreach (var item in Model.Comments)
+                                    {
+                                        <div class="single-review mb-30" style="background: rgba(19,21,25,0.7); padding: 10px; border-radius: 5px; overflow: auto; box-shadow: 1px 1px 5px 1px;">
+                                            <h4 style="color: #ecd634; font-weight: bold;">@item.CommentTitle</h4>
+
+                                            <p>@item.CommentContent</p>
+                                            <div class="review-name-action" style="float: right; font-style: italic;">
+
+                                                <ul>
+                                                    <li><a style="color:#ecd634" href="#">@item.Author.FirstName @item.Author.LastName</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    }
+
+                                    @*@foreach (var item in ViewBag.GetComments)
+        {
+            <div class="single-review mb-30">
+                <h4>Best action game play ever</h4>
+                <div class="ratting">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <p>@item.CommentContent</p>
+                <div class="review-name-action">
+                    <a href="#">@item.Author.FirstName @item.Author.LastName</a>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-thumbs-o-up"></i>425</a></li>
+                        <li><a href="#"><i class="fa fa-thumbs-o-down"></i>65</a></li>
+                    </ul>
+                </div>
+            </div>
+        }*@
+
+
                                     <!--Single Review End-->
-                                    <div class="reply-btn">
-                                        <a href="#">view more <i class="icofont-long-arrow-right"></i></a>
-                                    </div>
+                                  
                                 </div>
                             </div>
                         </div>

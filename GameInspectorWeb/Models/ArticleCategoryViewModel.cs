@@ -20,5 +20,7 @@ namespace GameInspectorWeb.Models
         public string CoverPhotoPath { get; set; }
 
         public DateTime? Time { get; set; }
+
+        public int Comments { get; set; }
     }
 }

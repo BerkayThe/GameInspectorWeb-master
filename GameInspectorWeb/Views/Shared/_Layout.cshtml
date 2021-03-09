@@ -303,10 +303,9 @@
                     });
                 },
                 select: function (e, i) {
-
-                    var path = window.location.origin + "/Home/ArticleContent/" + i.item.value;
-                    window.location.replace(path);
-                    //window.location.href = "Home/ArticleContent/39";
+                    window.location.pathname = "/Home/ArticleContent/" + i.item.value;
+                    //var path = window.location.origin + "/Home/ArticleContent/" + i.item.value;
+                    //window.location.replace(path);
                 },
                 minLength: 1
             })

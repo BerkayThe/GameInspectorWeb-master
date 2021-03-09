@@ -139,7 +139,8 @@ namespace GameInspectorWeb.Controllers
                                                 CoverPhotoPath = cat.artCat.Article.CoverPhotoPath,
                                                 Time = cat.artCat.Article.Time,
                                                 CategoryId = cat.artCat.CategoryId,
-                                                CategoryName = cat.artCat.Category.CategoryName
+                                                CategoryName = cat.artCat.Category.CategoryName,
+                                                Comments = cat.artCat.Article.Comments.Count()
                                             }
                                         )
                                         .Where(x => x.CategoryId == catId)
@@ -156,12 +157,12 @@ namespace GameInspectorWeb.Controllers
                     ArticleId = x.Id,
                     ArticleTitle = x.Title,
                     CoverPhotoPath = x.CoverPhotoPath,
-                    Time = x.Time
+                    Time = x.Time,
+                    Comments = x.Comments.Count()
                 }).OrderByDescending(x => x.Time)
                  .Skip(pageIndex * pageSize)
                  .Take(pageSize)
                  .ToList();
-
             }
 
 
